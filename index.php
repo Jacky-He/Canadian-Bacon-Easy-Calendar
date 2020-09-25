@@ -4,4 +4,6 @@ if (isset($_SESSION["loggedin"]) && isset($_SESSION["user_id"]) && $_SESSION["lo
 {
     header("location: home.php");
 }
+
+
 ?>

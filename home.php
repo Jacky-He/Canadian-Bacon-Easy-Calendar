@@ -13,7 +13,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
         <meta name="description" content="">
         <!-- header start -->
-        <?php include("includes/header.php") ?>
+        <?php include("includes/templates/header.php") ?>
         
         <script>
             var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
