@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: aliceblue;
+}
+li {
+    display: inline-block;
+    padding: 16px;
+    margin: 0;
+    font-size: 1.2em;
+    background-color: inherit;
+    color: black;
+}
+li:hover{
+    cursor: pointer;
+    background-color: #e0e8ef;
+}
+.searchCourse {
+    float: right;
+    margin: 16px;
+}
