@@ -33,7 +33,7 @@ class Event
     public $repeatinterval;
     public $zoomlink;
 
-    function __construct(int $id, string $type, DateTime $start, DateTime $end, Boolean $repeat, int $repeatday, int $repeatinterval, string $zoomlink)
+    function __construct(int $id, string $type, string $start, string $end, Boolean $repeat, int $repeatday, int $repeatinterval, string $zoomlink)
     {
         $this->id = $id;
         $this->type = $type;
@@ -208,76 +208,264 @@ function courseNameExists(string $course_name) : Boolean
     return false;
 }
 
-function addCourse (string $course_code, string $lecture_num, ?string $recitation_num, string $course_name) : ?Course
+function addCourse (string $course_code, string $lecture_num, string $recitation_num, string $course_name) : ?Course
 {
     $db = new DB();
     $sql =<<<EOF
+    INSERT INTO courses (course_name, course_code, lecture_num, lab_num)
+    VALUES ('$course_code', '$lecture_num', '$recitation_num', '$course_name');
     EOF;
+    $ret = $db -> exec($sql);
+    if (!$ret) echo $db -> lastErrorMsg();
 }
 
-function removeCourse(int $id)
+function removeCourse(string $id)
 {
-
+    $db = new DB();
+    $sql =<<<EOF
+    DELETE FROM courses WHERE id = $id;
+    EOF;
+    $ret = $db -> exec($sql);
+    if (!$ret) echo $db -> lastErrorMsg();
+    $db -> close();
 }
 
-function addCourseToUser(int $user_id, int $course_id)
+function addCourseToUser(string $user_id, string $course_id)
 {
-
+    $db = new DB();
+    $sql =<<<EOF
+    INSERT INTO users_courses_link (user_id, course_id)
+    VALUES ($user_id, $course_id);
+    EOF;
+    $ret = $db -> exec($sql);
+    if (!$ret) echo $db -> lastErrorMsg();
+    $db -> close();
 }
 
 function removeCourseFromUser(int $user_id, int $course_id)
 {
-
+    $db = new DB();
+    $sql =<<<EOF
+    DELTE FROM users_courses_link WHERE user_id=$user_id AND $course_id=$course_id;
+    EOF;
+    $ret = $db -> exec($sql);
+    if (!$ret) echo $db -> lastErrorMsg();
+    $db -> close();
 }
 
-function addEvent (string $type, DateTime $start, DateTime $end, bool $repeat, int $repeat_day, int $repeat_interval, ?string $zoom_link) : ?Event
+function addEvent (string $type, string $start, string $end, bool $repeat, int $repeat_day, int $repeat_interval, ?string $zoom_link) : ?Event
 {
-
+    $db = new DB();
+    $repeated = 0;
+    if ($repeat) $repeated = 1;
+    $sql =<<<EOF
+    INSERT INTO events (type, start, end, repeat, repeatDay, repeatInterval, zoomlink)
+    VALUES ('$type', '$start', '$end', '$repeated', $repeat_day, $repeat_interval, '$zoom_link');
+    EOF;
+    $ret = $db -> exec($sql);
+    if (!$ret) echo $db -> lastErrorMsg();
+    $db -> close();
 }
 
-function removeEvent (int $id)
+function removeEvent (string $id)
 {
-
+    $db = new DB();
+    $sql =<<<EOF
+    DELETE FROM events WHERE id=$id;
+    EOF;
+    $ret = $db -> exec($sql);
+    if (!$ret) echo $db -> lastErrorMsg();
+    $db -> close();
 }
 
-function addEventToCourse(int $course_id, int $event_id)
+function addEventToCourse(string $course_id, string $event_id)
 {
-
+    $db = new DB();
+    $sql =<<<EOF
+    INSERT INTO courses_events_link (course_id, event_id) 
+    VALUES ($course_id, $event_id);
+    EOF;
+    $ret = $db -> exec($sql);
+    if (!$ret) echo $db -> lastErrorMsg();
+    $db -> close();
 }
 
-function removeEventFromCourse(int $course_id, int $event_id)
+function removeEventFromCourse(string $course_id, string $event_id)
 {
-
+    $db = new DB();
+    $sql =<<<EOF
+    DELETE FROM courses_events_link WHERE course_id=$course_id AND event_id=$event_id;
+    EOF;
+    $ret = $db -> exec($sql);
+    if (!$ret) echo $db -> lastErrorMsg();
+    $db -> close();
 }
 
-function getUserById (int $user_id) : ?User
+function getUserById (string $user_id) : ?User
 {
-
+    $db = new DB();
+    $courses = array();
+    $sql =<<<EOF
+    SELECT * FROM users_courses_link WHERE user_id=$user_id;
+    EOF;
+    $ret = $db -> query($sql);
+    while ($row = $ret->fetchArray(SQLITE3_ASSOC)) 
+    {
+        array_push($courses, getCourseById($row["course_id"]));
+    }
+    $sql =<<<EOF
+    SELECT * FROM users WHERE id=$user_id;
+    EOF;
+    $ret = $db -> query($sql);
+    if ($row = $ret->fetchArray(SQLITE3_ASSOC))
+    {
+        return new User($row['id'], $row['role'], $row['email'], $courses);
+    }
+    return null;
 }
 
 function getUserByEmail (string $email) : ?User
 {
-
+    $db = new DB();
+    $courses = array();
+    $sql =<<<EOF
+    SELECT * FROM users WHERE email='$email';
+    EOF;
+    $ret = $db -> query($sql);
+    if ($row = $ret->fetchArray(SQLITE3_ASSOC))
+    {
+        $id = $row['id'];
+        $sql =<<<EOF
+        SELECT * FROM users_courses_link WHERE user_id=$id;
+        EOF;
+        $ret2 = $db -> query($sql);
+        while ($row2 = $ret2->fetchArray(SQLITE3_ASSOC)) 
+        {
+            array_push($courses, getCourseById($row2["course_id"]));
+        }
+        return new User($row['id'], $row['role'], $row['email'], $courses);
+    }
+    return null;
 }
 
-function getCourseById (int $course_id) : ?Course
+function getCourseById (string $course_id) : ?Course
 {
-
+    $db = new DB();
+    $events = array();
+    $sql =<<<EOF
+    SELECT * FROM courses WHERE id=$course_id;
+    EOF;
+    $ret = $db -> query($sql);
+    if ($row = $ret->fetchArray(SQLITE3_ASSOC))
+    {
+        $id = $row['id'];
+        $sql =<<<EOF
+        SELECT * FROM courses_events_link WHERE course_id=$id;
+        EOF;
+        $ret2= $db -> query($sql);
+        while ($row2 = $ret2 -> fetchArray(SQLITE3_ASSOC))
+        {
+            array_push($events, getEventById($row2['event_id']));
+        }
+        return new Course($row['id'], $row['course_name'], $row['course_code'], $row['lecture_num'], $row['lab_num'], $events);
+    }
+    return null;
 }
 
 function getCourseByCourseName (string $course_name) : ?Course
 {
-
+    $db = new DB();
+    $events = array();
+    $sql =<<<EOF
+    SELECT * FROM courses WHERE course_name='$course_name';
+    EOF;
+    $ret = $db -> query($sql);
+    if ($row = $ret->fetchArray(SQLITE3_ASSOC))
+    {
+        $id = $row['id'];
+        $sql =<<<EOF
+        SELECT * FROM courses_events_link WHERE course_id=$id;
+        EOF;
+        $ret2= $db -> query($sql);
+        while ($row2 = $ret2 -> fetchArray(SQLITE3_ASSOC))
+        {
+            array_push($events, getEventById($row2['event_id']));
+        }
+        return new Course($row['id'], $row['course_name'], $row['course_code'], $row['lecture_num'], $row['lab_num'], $events);
+    }
+    return null;
 }
 
 function getCourseByCourseCode (string $course_code) : ?Course
 {
-
+    $db = new DB();
+    $events = array();
+    $sql =<<<EOF
+    SELECT * FROM courses WHERE course_code='$course_id';
+    EOF;
+    $ret = $db -> query($sql);
+    if ($row = $ret->fetchArray(SQLITE3_ASSOC))
+    {
+        $id = $row['id'];
+        $sql =<<<EOF
+        SELECT * FROM courses_events_link WHERE course_id=$id;
+        EOF;
+        $ret2= $db -> query($sql);
+        while ($row2 = $ret2 -> fetchArray(SQLITE3_ASSOC))
+        {
+            array_push($events, getEventById($row2['event_id']));
+        }
+        return new Course($row['id'], $row['course_name'], $row['course_code'], $row['lecture_num'], $row['lab_num'], $events);
+    }
+    return null;
 }
 
-function getEventById (int $event_id) : ?Event
+function getEventById (string $event_id) : ?Event
 {
+    $db = new DB();
+    $sql =<<<EOF
+    SELECT * FROM events WHERE id=$event_id;
+    EOF;
+    $ret = $db -> query($sql);
+    if ($row = $ret -> fetchArray(SQLITE3_ASSOC))
+    {
+        // return new Event ($row['id'], $row['type'], $row['start'], $row['end'], $row['repeat'], $row)
+    }
+}
 
+// CREATE TABLE events
+// (
+//     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+//     type TEXT NOT NULL,
+//     start TEXT NOT NULL,
+//     end TEXT NOT NULL,
+//     repeat INTEGER NOT NULL,
+//     repeatDay INTEGER NOT NULL,
+//     repeatInterval INTEGER NOT NULL,
+//     zoomlink TEXT NOT NULL
+// );
+
+class Event
+{
+    public $id;
+    public $type; //"oh" | "assess"
+    public $start;
+    public $end;
+    public $repeat;
+    public $repeatday;
+    public $repeatinterval;
+    public $zoomlink;
+
+    function __construct(int $id, string $type, string $start, string $end, Boolean $repeat, int $repeatday, int $repeatinterval, string $zoomlink)
+    {
+        $this->id = $id;
+        $this->type = $type;
+        $this->start = $start;
+        $this->$end = $end;
+        $this->$repeat = $repeat;
+        $this->$repeatday = $repeatday;
+        $this->$zoomlink = $zoomlink;
+    }
 }
 
 function getAllCourse() : array

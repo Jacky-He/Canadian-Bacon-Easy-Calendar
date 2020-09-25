@@ -5,13 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
         <meta name="description" content="">
         <!-- header start -->
-        <script src="/vendors/ics.deps.min.js"></script>
-        <script src="/vendors/ics.min.js"></script>
-        <script src="/vendors/ics.js"></script>
-        <script src="/js/functions.js"></script>
-        <link rel="stylesheet" href="nav.css">
-    </head>
-    <body>
+        <?php include("includes/header.php") ?>
+        
         <script>
             var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
                            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -71,20 +66,6 @@
         <button onclick="createICS()">Click me</button>
         <input id="text-input" type="text" placeholder="stuff"/>
         <script src="/js/test.js"></script>
-
-        <div class="cont">
-            <div class="nav">
-                <ul>
-                <a href="default.asp"><li>Home</li></a>
-                <a href="Login.asp"><li>Login</li></a>
-                <a href="contact.asp"><li>Contact</li></a>
-                <a href="about.asp"><li>About</li></a>
-                <input id="search-bar" type="text" placeholder="Search Course" class="searchCourse"/>
-                </ul> 
-            </div>
-        </div>
-        
-
     </body>
     <!-- footer ends -->
 </html>
