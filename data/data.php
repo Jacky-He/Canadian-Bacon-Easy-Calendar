@@ -242,7 +242,7 @@ function addCourseToUser(string $user_id, string $course_id)
     $db -> close();
 }
 
-function removeCourseFromUser(int $user_id, int $course_id)
+function removeCourseFromUser(string $user_id, string $course_id)
 {
     $db = new DB();
     $sql =<<<EOF
@@ -429,57 +429,55 @@ function getEventById (string $event_id) : ?Event
     $ret = $db -> query($sql);
     if ($row = $ret -> fetchArray(SQLITE3_ASSOC))
     {
-        // return new Event ($row['id'], $row['type'], $row['start'], $row['end'], $row['repeat'], $row)
+        return new Event ($row['id'], $row['type'], $row['start'], $row['end'], $row['repeat'] == 1, $row['repeatDay'], $row['repeatInterval'], $row['zoomlink']);
     }
-}
-
-// CREATE TABLE events
-// (
-//     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-//     type TEXT NOT NULL,
-//     start TEXT NOT NULL,
-//     end TEXT NOT NULL,
-//     repeat INTEGER NOT NULL,
-//     repeatDay INTEGER NOT NULL,
-//     repeatInterval INTEGER NOT NULL,
-//     zoomlink TEXT NOT NULL
-// );
-
-class Event
-{
-    public $id;
-    public $type; //"oh" | "assess"
-    public $start;
-    public $end;
-    public $repeat;
-    public $repeatday;
-    public $repeatinterval;
-    public $zoomlink;
-
-    function __construct(int $id, string $type, string $start, string $end, Boolean $repeat, int $repeatday, int $repeatinterval, string $zoomlink)
-    {
-        $this->id = $id;
-        $this->type = $type;
-        $this->start = $start;
-        $this->$end = $end;
-        $this->$repeat = $repeat;
-        $this->$repeatday = $repeatday;
-        $this->$zoomlink = $zoomlink;
-    }
+    return null;
 }
 
 function getAllCourse() : array
 {
-
+    $db = new DB();
+    $sql =<<<EOF
+    SELECT * FROM courses;
+    EOF;
+    $ret = $db -> query($sql);
+    $courses = array();
+    while ($row = $ret -> fetchArray(SQLITE3_ASSOC))
+    {
+        array_push($courses, getCourseById($row['id']));
+    }
+    return $courses;
 }
 
 function getAllEvents() : array
 {
-
+    $db = new DB();
+    $sql =<<<EOF
+    SELECT * FROM events;
+    EOF;
+    $ret = $db -> query($sql);
+    $events = array();
+    while($row = $ret -> fetchArray(SQLITE3_ASSOC))
+    {
+        array_push($events, getEventById($row['id']));
+    }
+    $db -> close();
+    return $events;
 }
 
 function getAllUsers() : array
 {
-
+    $db = new DB();
+    $sql =<<<EOF
+    SELECT * FROM users;
+    EOF;
+    $ret = $db -> query($sql);
+    $users = array();
+    while ($row = $ret -> fetchArray(SQLITE3_ASSOC))
+    {
+        array_push($users, getUserById($row['id']));
+    }
+    $db -> close();
+    return $users;
 }
 ?>
