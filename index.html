@@ -8,6 +8,7 @@
         <script src="/vendors/ics.deps.min.js"></script>
         <script src="/vendors/ics.min.js"></script>
         <script src="/vendors/ics.js"></script>
+        <script src="/js/functions.js"></script>
     </head>
     <body>
         <script>
@@ -16,6 +17,7 @@
             cal.addEvent('Demo Event', 'This is thirty minute event', 'Nome, AK', '8/7/2013 5:30 pm', '8/7/2013 6:00 pm');
         </script>
         <a href="#" onclick="javascript:cal.download()">Demo</a>
+        <button onclick="createICS()">Click me</button>
         <input id="test-input" type="text" placeholder="stuff"/>
         <script src="/js/test.js"></script>
     </body>
