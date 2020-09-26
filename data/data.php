@@ -38,10 +38,11 @@ class Event
         $this->id = $id;
         $this->type = $type;
         $this->start = $start;
-        $this->$end = $end;
-        $this->$repeat = $repeat;
-        $this->$repeatday = $repeatday;
-        $this->$zoomlink = $zoomlink;
+        $this->end = $end;
+        $this->repeat = $repeat;
+        $this->repeatday = $repeatday;
+        $this->repeatinterval = $repeatinterval;
+        $this->zoomlink = $zoomlink;
     }
 }
 
@@ -452,6 +453,8 @@ function getEventById (string $event_id) : ?Event
     {
         return new Event ($row['id'], $row['type'], $row['start'], $row['end'], $row['repeat'] == 1, $row['repeatDay'], $row['repeatInterval'], $row['zoomlink']);
     }
+
+    
     return null;
 }
 

@@ -38,13 +38,24 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-7">
-                        <div class="search"></div>
+                    <div class="col-lg-8">
+                        <div class="existing-courses">Your Courses</div>
+                        <div id="no-course" class="no-course active">You currently have no courses</div>
+                        <div id="courses-container" class="courses-container">
+                            <!-- <a href="/prof/course/course.php?id=stuff" style="text-decoration: none; color: black">
+                                <div class="course-id" hidden="true">asdfasd</div>
+                                <div class="underline"></div>
+                                <span class="course-code">15-122</span>
+                                <span class="course-name" style="margin-left: 10px;">Principles of Imperative computing</span>
+                                <span class="lecture" style="margin-left: 10px;"><span style="font-family:'montserratbold'">lecture: </span>2</span>
+                                <span class="section" style="margin-left: 10px;"><span style="font-family:'montserratbold'">section: </span>P</span>
+                            </a> -->
+                        </div>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <input type="text" id="search-bar" placeholder="Search courses">
                         <div id="drop-down" class="drop-down">
-                            <div class="drop-course-item">
+                            <!-- <div class="drop-course-item">
                                 <div class="add-course"><img src="/includes/images/add.png" alt="add icon" class="add-img"/>
                                 <div class="course-id" hidden="true">asdfasd</div>
                                 </div>
@@ -52,7 +63,7 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
                                 <div class="course-name">Principles of Imperative Computing</div>
                                 <div class="lecture">lecture: 2</div>
                                 <div class="section">section: P</div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

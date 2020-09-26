@@ -1,0 +1,11 @@
+.topsec 
+{
+    width: 100%;
+    height: 300px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 20px;
+}
