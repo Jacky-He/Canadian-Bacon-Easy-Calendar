@@ -17,12 +17,9 @@ li {
     font-size: 1.2em;
     background-color: inherit;
     color: black;
+    transition: 0.3s;
 }
 li:hover{
     cursor: pointer;
     background-color: #e0e8ef;
-}
-.searchCourse {
-    float: right;
-    margin: 16px;
 }

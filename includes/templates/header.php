@@ -12,8 +12,7 @@
                 <a href="default.asp"><li>Home</li></a>
                 <a href="Login.asp"><li>Login</li></a>
                 <a href="contact.asp"><li>Contact</li></a>
-                <a href="about.asp"><li>About</li></a>
-                <input id="search-bar" type="text" placeholder="Search Course" class="searchCourse"/>
+                <a href="dashboard.php"><li>Dashboard</li></a>
                 </ul> 
             </div>
         </div>

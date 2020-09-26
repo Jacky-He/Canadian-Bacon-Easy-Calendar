@@ -1,0 +1,16 @@
+.search {
+    text-align: center;
+}
+.searchCourse {
+    float: center;
+    margin: 20px;
+    padding: 6px 4px;
+    border: solid #ebebeb;
+    font-size: 1.05em;
+    width: 30%;
+    transition: 0.3s;
+}
+.searchCourse:focus {
+    border: solid rgba(0,0,0,0);
+    border-bottom: solid skyblue;
+}
