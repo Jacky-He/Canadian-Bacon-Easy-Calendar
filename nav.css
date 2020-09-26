@@ -29,11 +29,11 @@ li:hover{
     background-color: #e0e8ef;
 }
 .bg {
-    background-image: url("includes/images/background.jpg");
+    /* background-image: url("includes/images/background.jpg");
   
     height: 100%;
   
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;*/
 }

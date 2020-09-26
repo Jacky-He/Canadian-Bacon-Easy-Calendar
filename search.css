@@ -1,24 +1,34 @@
 .search {
     text-align: center;
-    position: relative;
     display: block;
 }
+
 .searchCourse {
     margin: 20px;
     padding: 6px 4px;
-    border: solid #ebebeb;
-    font-size: 1.05em;
+    border: solid rgba(0,0,0,0);
+    border-bottom: solid #ebebeb;
     width: 30%;
+    font-size: 1.1em;
     transition: 0.3s;
 }
+
 .searchCourse:focus {
     border: solid rgba(0,0,0,0);
     border-bottom: solid skyblue;
 }
-.search:focus-within .dropdown-content {display: block;}
+
+.search:focus-within .dropdown-content {
+    display: inline-block;
+}
+
 .dropdown-content {
     display: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    width: 30%;
+    padding: 10px;
 }
-.dropdown-content a {
+
+.dropdown-content spam {
     display: block;
 }
