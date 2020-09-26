@@ -268,7 +268,7 @@ function removeCourseFromUser(string $user_id, string $course_id)
 {
     $db = new DB();
     $sql =<<<EOF
-    DELTE FROM users_courses_link WHERE user_id=$user_id AND course_id=$course_id;
+    DELETE FROM users_courses_link WHERE user_id=$user_id AND course_id=$course_id;
     EOF;
     $ret = $db -> exec($sql);
     if (!$ret) echo $db -> lastErrorMsg();

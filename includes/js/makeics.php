@@ -21,7 +21,41 @@
 
             var cal = ics();
 
-            
+            function updateList(){
+                var list = document.getElementById("course-list");
+                while (list.firstChild) {
+                    list.firstChild.remove()
+                }
+                let email = document.getElementById("session-email").innerHTML;
+
+                let params = {
+                    funcName: "getUserByEmail",
+                    email: email
+                }
+                var user;
+                var courseArr;
+
+                function setUser(responseText){
+                    console.log(responseText);
+                    let json = JSON.parse(responseText);
+                    user = json;
+
+                    courseArr = user["courses"];
+
+                    for(var i = 0; i < courseArr.length; i++){
+
+                        var course = courseArr[i];
+                        var node = document.createElement("LI");  
+                        var textnode = document.createTextNode(course["name"].concat(" ", course["code"]));
+                        node.appendChild(textnode); 
+
+                        list.appendChild(node);
+                        
+                    }
+                }
+
+                callFunc(params, setUser);
+            }
 
             function addToICS(){
                 var input = document.getElementById("search-bar").value;
@@ -67,8 +101,8 @@
                             }
 
                             function addCourse(responseText){
-                                alert(responseText);
                                 console.log(responseText);
+                                updateList();
                             }
 
                             callFunc(params, addCourse);
@@ -99,9 +133,104 @@
 
                             function addCourse(responseText){
                                 console.log(responseText);
+                                updateList();
                             }
 
                             callFunc(params, addCourse);
+                            
+                        }
+
+                        callFunc(params, setCourse);
+
+
+                    }
+                }
+
+                callFunc(params, setUser);
+
+
+            }
+
+            function removeFromICS(){
+                var input = document.getElementById("search-bar").value;
+
+                var hasLetters = false;
+
+                var course;
+
+                let email = document.getElementById("session-email").innerHTML;
+                console.log(email);
+
+                let params = {
+                    funcName: "getUserByEmail",
+                    email: email
+                }
+                var user;
+
+                function setUser(responseText){
+                    console.log(responseText);
+                    let json = JSON.parse(responseText);
+                    user = json;
+
+                                    
+                    for(var i=0; i<letters.length && !hasLetters; i++){
+                        if(input.includes(letters[i])) hasLetters=true;
+                    }
+                    if(hasLetters){
+                        //Course name
+                        params = {
+                            funcName: "getCourseByCourseName",
+                            course_name: input
+                        }
+
+                        function setCourse(responseText){
+                            console.log(responseText);
+                            let json = JSON.parse(responseText);
+                            course = json;
+
+                            params = {
+                                funcName: "removeCourseFromUser",
+                                user_id: user["id"],
+                                course_id: course["id"]
+                            }
+
+                            function removeCourse(responseText){
+                                console.log(responseText);
+                                updateList();
+                            }
+
+                            callFunc(params, removeCourse);
+                        }
+
+                        callFunc(params, setCourse);
+
+
+
+                    }
+                    else{
+                        //Course Number
+                        params = {
+                            funcName: "getCourseByCourseCode",
+                            course_code: input
+                        }
+
+                        function setCourse(responseText){
+                            console.log(responseText);
+                            let json = JSON.parse(responseText);
+                            course = json;
+
+                            params = {
+                                funcName: "removeCourseFromUser",
+                                user_id: user["id"],
+                                course_id: course["id"]
+                            }
+
+                            function removeCourse(responseText){
+                                console.log(responseText);
+                                updateList();
+                            }
+
+                            callFunc(params, removeCourse);
                         }
 
                         callFunc(params, setCourse);
