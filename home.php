@@ -144,7 +144,6 @@
             }
 
         </script>
-        <a href="#" onclick="javascript:cal.download()">Demo</a>
         <button onclick="createICS()">Click me</button>
         <input id="text-input" type="text" placeholder="stuff"/>
         <script src="/js/test.js"></script>
