@@ -275,7 +275,7 @@ function removeCourseFromUser(string $user_id, string $course_id)
     $db -> close();
 }
 
-function addEvent (string $type, string $start, string $end, bool $repeat, int $repeat_day, int $repeat_interval, string $zoom_link)
+function addEvent (string $type, string $start, string $end, bool $repeat, int $repeat_day, int $repeat_interval, string $zoom_link): ?Event
 {
     $db = new DB();
     $repeated = 0;
@@ -286,12 +286,31 @@ function addEvent (string $type, string $start, string $end, bool $repeat, int $
     EOF;
     $ret = $db -> exec($sql);
     if (!$ret) echo $db -> lastErrorMsg();
-    $db -> close();
+    $newid = $db -> lastInsertRowid();
+    return getEventById($newid);
+}
+
+function setEvent (string $id, string $type, string $start, string $end, bool $repeat, int $repeat_day, int $repeat_interval, string $zoom_link): ?Event
+{
+    $db = new DB();
+    $repeated = 0;
+    if ($repeat) $repeated = 1;
+    $sql =<<<EOF
+    UPDATE events SET type='$type', start='$start', end='$end', repeat='$repeated', repeatDay='$repeat_day', repeatInterval='$repeat_interval', zoomlink='$zoom_link' WHERE id=$id;
+    EOF;
+    $ret = $db -> exec($sql);
+    if (!$ret) echo $db -> lastErrorMsg();
+    return getEventById($id);
 }
 
 function removeEvent (string $id)
 {
     $db = new DB();
+    $sql =<<<EOF
+    DELETE FROM courses_events_link WHERE event_id=$id;
+    EOF;
+    $ret = $db -> exec($sql);
+    if(!$ret) echo $db -> lastErrorMsg();
     $sql =<<<EOF
     DELETE FROM events WHERE id=$id;
     EOF;
@@ -453,8 +472,6 @@ function getEventById (string $event_id) : ?Event
     {
         return new Event ($row['id'], $row['type'], $row['start'], $row['end'], $row['repeat'] == 1, $row['repeatDay'], $row['repeatInterval'], $row['zoomlink']);
     }
-
-    
     return null;
 }
 

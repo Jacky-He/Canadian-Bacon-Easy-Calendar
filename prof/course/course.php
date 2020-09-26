@@ -42,40 +42,120 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
             </div>
             <div class="container">
                 <div class="row">
-
-
-                    <div class="col-lg-8">
-                        <div class="existing-courses">Your Courses</div>
-                        <div id="no-course" class="no-course active">You currently have no courses</div>
-                        <div id="courses-container" class="courses-container">
-                            <a href="/prof/course/course.php?id=stuff" style="text-decoration: none; color: black">
-                                <div class="course-id" hidden="true">asdfasd</div>
-                                <div class="underline"></div>
-                                <span class="course-code">15-122</span>
-                                <span class="course-name" style="margin-left: 10px;">Principles of Imperative computing</span>
-                                <span class="lecture" style="margin-left: 10px;"><span style="font-family:'montserratbold'">lecture: </span>2</span>
-                                <span class="section" style="margin-left: 10px;"><span style="font-family:'montserratbold'">section: </span>P</span>
-                            </a>
+                    <div class="col-lg-12">
+                        <div class="controlpanel">
+                            <div class="event-title">All Events</div>
+                            <div id="addbutton" class="addbutton"><img src="/includes/images/add.png" class="add-img"></div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <input type="text" id="search-bar" placeholder="Search courses">
+                        <div id="noevent" class="noevent" hidden="true">There are currently no events for this course</div>
                         <div id="drop-down" class="drop-down">
-                            <!-- <div class="drop-course-item">
-                                <div class="add-course"><img src="/includes/images/add.png" alt="add icon" class="add-img"/>
-                                <div class="course-id" hidden="true">asdfasd</div>
-                                </div>
-                                <div class="course-code">15-122</div>
-                                <div class="course-name">Principles of Imperative Computing</div>
-                                <div class="lecture">lecture: 2</div>
-                                <div class="section">section: P</div>
-                            </div> -->
+                            <div class="borderline"></div>
+                            <div class="event-container">
+                                <span class="type">Office Hours</span><span class="date">Monday</span><span class="time">From 8:00 pm to 9:00 pm </span>
+                                <div class="repeat">Repeat Every Week on Monday</div>
+                                <span class="zoomlink">Zoom Link: </span><a href="https://us02web.zoom.us/j/87270086552?pwd=dGpwUTdyRi84elBPckdsVXVJSktoUT09" class="link">https://us02web.zoom.us/j/87270086552?pwd=dGpwUTdyRi84elBPckdsVXVJSktoUT09</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div id="grayout-container" class="grayout-container">
+        <div class="form-supercontainer">
+            <div class="form-container">
+                <div id="cancel" class="cancel"><img src="/includes/images/cancel.png" alt="cancel button" class="cancel-img"/></div>
+                <div id="form-title" class="title">Edit Event</div>
+                <span class="subtitle">Type</span>
+                <div> 
+                    <select name="type" id="edit-type">
+                        <option value="oh">Office Hours</option>
+                        <option value="assess">Assessment</option>
+                    </select>
+                </div>
+                <div class="subtitle">Date</div>
+                <div>
+                    <span class="subheading">Year</span>
+                    <select name="type" id="edit-year">
+                        <?php for ($i = 2020; $i <= 2100; $i++)  echo '<option value="'.$i.'">'.$i.'</option>';?>
+                    </select>
+                    <span class="subheading">Month</span>
+                    <select name="type" id="edit-month">
+                        <?php for ($i = 1; $i <= 12; $i++)  echo '<option value="'.$i.'">'.$i.'</option>';?>
+                    </select>
+                    <span class="subheading">Day</span>
+                    <select name="type" id="edit-day">
+                        <?php for ($i = 1; $i <= 31; $i++)  echo '<option value="'.$i.'">'.$i.'</option>';?>
+                    </select>
+                </div>
+                <div class="subtitle">Start Time</div>
+                <div>
+                    <span class="subheading">Hour</span>
+                    <select name="type" id="edit-start-hour">
+                        <?php for ($i = 0; $i <= 23; $i++)  echo '<option value="'.$i.'">'.$i.'</option>';?>
+                    </select>
+                    <span class="subheading">Minutes</span>
+                    <select name="type" id="edit-start-minute">
+                        <?php for ($i = 0; $i <= 59; $i++)  echo '<option value="'.$i.'">'.$i.'</option>';?>
+                    </select>
+                </div>
+                <div class="subtitle">End Time</div>
+                <div>
+                    <span class="subheading">Hour</span>
+                    <select name="type" id="edit-end-hour">
+                        <?php for ($i = 0; $i <= 23; $i++)  echo '<option value="'.$i.'">'.$i.'</option>';?>
+                    </select>
+                    <span class="subheading">Minutes</span>
+                    <select name="type" id="edit-end-minute">
+                        <?php for ($i = 0; $i <= 59; $i++)  echo '<option value="'.$i.'">'.$i.'</option>';?>
+                    </select>
+                </div>
+                <div class="subtitle">Repeat?</div>
+                <div>
+                    <select name="type" id="edit-repeat">
+                       <option value="no">No</option>
+                       <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="subtitle" id="repeatfreq" hidden="true">Repeat Frequency</div>
+                <div id="repeatfreqop" hidden="true">
+                    <select name="type" id="edit-repeatinterval">
+                       <option value="1">Once a week</option>
+                       <option value="2">Every two weeks</option>
+                       <option value="4">Every four weeks</option>
+                    </select>
+                </div>
+                <div class="subtitle">Zoom Link</div>
+                <input id="edit-zoomlink" type="text" name="zoomlink" class="input">
+                <div id="submit" class="submit">Save</div>
+                <div id="delete" class="submit">Delete Event</div>
+            </div>
             </div>
         </div>
         <script src="/prof/course/course.js"></script>
     </body>
     <!-- footer ends -->
 </html>
+
+<!-- class Event
+{
+    public $id;
+    public $type; //"oh" | "assess"
+    public $start;
+    public $end;
+    public $repeat;
+    public $repeatday;
+    public $repeatinterval;
+    public $zoomlink;
+
+    function __construct(int $id, string $type, string $start, string $end, bool $repeat, int $repeatday, int $repeatinterval, string $zoomlink)
+    {
+        $this->id = $id;
+        $this->type = $type;
+        $this->start = $start;
+        $this->end = $end;
+        $this->repeat = $repeat;
+        $this->repeatday = $repeatday;
+        $this->repeatinterval = $repeatinterval;
+        $this->zoomlink = $zoomlink;
+    }
+} -->
