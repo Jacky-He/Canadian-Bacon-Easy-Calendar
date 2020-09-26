@@ -1,9 +1,16 @@
 <?php 
-// session_start();
-// if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["user_id"]) || $_SESSION["loggedin"] == false)
-// {
-//     header("location: index.php");
-// }
+session_start();
+if (isset($_GET["session_email"]) && $_GET["session_email"] != "")
+{
+    $email = $_GET["session_email"];
+    $_SESSION["session_email"] = $email;
+    $_SESSION["loggedin"] = true;
+}
+
+if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SESSION["loggedin"] == false)
+{
+    header("location: index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +27,7 @@
         <div class="nav">
             <ul>
             <a href="home.php"><li>Home</li></a>
-            <a href="index.php"><li>Login</li></a>
+            <a href="logout.php"><li>Logout</li></a>
             <a href="contact.php"><li>Contact</li></a>
             <a href="dashboard.php"><li>Dashboard</li></a>
             </ul> 
