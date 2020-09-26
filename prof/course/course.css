@@ -251,3 +251,11 @@
     text-align: center;
     margin-top: 40px;
 }
+
+.backbutton {
+    font-family: 'montserratextrabold';
+    margin-left: 50px;
+    margin-bottom: 40px;
+    color: white;
+    text-decoration: none;
+}

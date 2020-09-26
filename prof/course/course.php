@@ -35,6 +35,7 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
         <div id="course-id" hidden="true"><?php echo $course_id?></div>
         <div class="content">
             <div class="topsec">
+                <a href="/prof/index.php" id="backbutton" class="backbutton">< Back</a>
                 <div id="course-code" class="course-code"></div>
                 <div id="course-name" class="course-name"></div>
                 <div id="lecturenumber" class="lecturenumber"></div>
