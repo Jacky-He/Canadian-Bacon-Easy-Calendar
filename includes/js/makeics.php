@@ -245,7 +245,7 @@
             }
 
             function downloadCal(){
-                cal = ics();
+                
                 
                 let email = document.getElementById("session-email").innerHTML;
                 console.log(email);
@@ -258,6 +258,7 @@
                 var courseArr;
 
                 function setUser(responseText){
+                    cal = ics();
                     console.log(responseText);
                     let json = JSON.parse(responseText);
                     user = json;
@@ -267,11 +268,12 @@
                     for(var i = 0; i < courseArr.length; i++){
 
                         var course = courseArr[i];
-
+                        console.log(course["events"]);
                         for(var i = 0; i < course["events"].length; i++){
                             var curr = course["events"][i];
                             if(!curr["repeat"]){
-                                cal.addEvent(course["code"].concat(" ", course["labNumber"], course["lectureNumber"], curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", curr["start"], curr["end"]);
+                                cal.addEvent(course["code"].concat(" ", course["labNumber"], course["lectureNumber"], 
+                                " ", curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", parseInt(curr["start"]), parseInt(curr["end"]));
                             }
                             else{
                                 var rrule = {
@@ -280,7 +282,8 @@
                                     interval: curr["repeatinterval"],
                                     byday: [weekdays[curr["repeatday"]]]
                                 }
-                                cal.addEvent(course["code"].concat(" ", course["labNumber"], course["lectureNumber"], curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", curr["start"], curr["end"], rrule);
+                                cal.addEvent(course["code"].concat(" ", course["labNumber"], course["lectureNumber"],
+                                " ", curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", parseInt(curr["start"]), parseInt(curr["end"]), rrule);
                             }
                         }
                     }

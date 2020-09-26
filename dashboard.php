@@ -32,13 +32,13 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
                 <spam>No course found.</spam>
             </div>
         </div>
-                
+        <div class="search">     
         <button onclick="addToICS()">Add to Calendar</button>
         <button onclick="downloadCal()">Download Calendar</button>
         <button onclick="removeFromICS()">Remove from Calendar</button>
-
+        </div>
         <div class="courseList">
-            <p> Your Courses </p>
+            <p class = "titleP"> Your Courses </p>
             <ul id="course-list">
             <ul>
         </div>
