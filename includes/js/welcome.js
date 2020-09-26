@@ -92,7 +92,6 @@ function submitSignUp()
         let json = JSON.parse(responseText);
         if (json && json["id"]) 
         {
-            alert ("Success");
             hideGrayout();
         }
         else alert(responseText);

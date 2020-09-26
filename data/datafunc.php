@@ -111,7 +111,8 @@ else if ($funcName == "setEvent")
     if ($repeat_day == "") throwError("no parameter repeat_day");
     if ($repeat_interval == "") throwError("no parameter repeat_interval");
     if ($zoom_link == "") throwError("no parameter zoom_link");
-    echo json_encode(setEvent ($id, $type, $start, $end, $repeat, intval($repeat_day), intval($repeat_interval), $zoom_link));
+    $repeatbool = ($repeat == "true");
+    echo json_encode(setEvent ($id, $type, $start, $end, $repeatbool, intval($repeat_day), intval($repeat_interval), $zoom_link));
 }
 else if ($funcName == "removeEvent")
 {
