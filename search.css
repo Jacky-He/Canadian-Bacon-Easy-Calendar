@@ -1,8 +1,9 @@
 .search {
     text-align: center;
+    position: relative;
+    display: block;
 }
 .searchCourse {
-    float: center;
     margin: 20px;
     padding: 6px 4px;
     border: solid #ebebeb;
@@ -13,4 +14,11 @@
 .searchCourse:focus {
     border: solid rgba(0,0,0,0);
     border-bottom: solid skyblue;
+}
+.search:focus-within .dropdown-content {display: block;}
+.dropdown-content {
+    display: none;
+}
+.dropdown-content a {
+    display: block;
 }

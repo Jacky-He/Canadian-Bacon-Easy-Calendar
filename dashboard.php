@@ -7,6 +7,9 @@
         <?php include("includes/js/makeics.php") ?>
         <div class="search">
             <input id="search-bar" type="text" placeholder="Search Course" class="searchCourse"/>
+            <div class="dropdown-content">
+                <a href="#"> No course found. </a>
+            </div>
         </div>
                 
         <button onclick="resetCal()">Reset Calendar</button>
