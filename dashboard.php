@@ -5,9 +5,10 @@
         <link rel="stylesheet" href="search.css">
         <?php include("includes/templates/header.php") ?>
         <?php include("includes/js/makeics.php") ?>
+        <script src="includes/js/search_course.js"></script>
         <div class = "bg">
         <div class="search">
-            <input id="search-bar" type="text" placeholder="Search Course" class="searchCourse"/>
+            <input id="search-bar" type="text" placeholder="Search Course" onkeydown="processKeyDown()" onclick="processClick()" class="searchCourse"/>
             <br>
             <div class="dropdown-content">
                 <spam>No course found.</spam>
