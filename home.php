@@ -52,9 +52,9 @@
                         start: "9/26/2020 5:30 pm",
                         end: "9/26/2020 6:30 pm",
                         repeat: true,
-                        repeatday: 1,
+                        repeatday: 6,
                         repeatinterval: 1,
-                        zoomlink: "LINK"
+                        zoomlink: "LINK1"
                     },
                     {
                         id: "2",
@@ -62,9 +62,9 @@
                         start: "9/26/2020 6:30 pm",
                         end: "9/26/2020 7:30 pm",
                         repeat: true,
-                        repeatday: 1,
+                        repeatday: 6,
                         repeatinterval: 2,
-                        zoomlink: "LINK"
+                        zoomlink: "LINK2"
                     },
                     {
                         id: "3",
@@ -72,9 +72,9 @@
                         start: "9/26/2020 7:30 pm",
                         end: "9/26/2020 8:30 pm",
                         repeat: true,
-                        repeatday: 1,
+                        repeatday: 6,
                         repeatinterval: 4,
-                        zoomlink: "LINK"
+                        zoomlink: "LINK3"
                     },
                     {
                         id: "4",
@@ -82,9 +82,9 @@
                         start: "9/26/2020 8:30 pm",
                         end: "9/26/2020 9:30 pm",
                         repeat: false,
-                        repeatday: 1,
+                        repeatday: 6,
                         repeatinterval: 1,
-                        zoomlink: "LINK"
+                        zoomlink: "LINK4"
                     }
                 ]};
                 if(hasLetters){
