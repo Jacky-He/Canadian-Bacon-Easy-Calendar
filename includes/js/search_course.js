@@ -64,11 +64,11 @@ function courseMatch() {
             for (j = 0;j < courseKeywords.length;j++) {
                 for (k = 0;k < courseKeywords[j].length;k++) {
                     let prefix = commonPrefix(courseKeywords[j][k], keywords[i]);
-                    if (prefix == keywords[i].length) {
+                    if (prefix == courseKeywords[j][k].length && prefix == keywords[i].length) {
                         wordMatches[j]++;
                         break;
                     }
-                    else {
+                    else if (prefix == keywords[i].length) {
                         prefixMatches[j] = Math.max(prefixMatches[j], prefix);
                     }
                 }
