@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <script>
+        <title> My Calendar </title>
+        <link rel="stylesheet" href="search.css">
+        <?php include("includes/templates/header.php") ?>
+        <script>
             function callFunc (postparams, completion)
             {
                 let xhttp = new XMLHttpRequest();
@@ -21,8 +24,15 @@
             var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
                            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
             var weekdays = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
+
+            var cal = ics();
+
+            function resetCal(){
+                cal = ics();
+            }
+
             function createICS(){
-                var input = document.getElementById("text-input").value;
+                var input = document.getElementById("search-bar").value;
                 
                 var hasLetters = false;
                 
@@ -108,8 +118,6 @@
                     callFunc(params, setCourse);
                 }
 
-                var cal = ics();
-
                 for(var i = 0; i < course["events"].length; i++){
                     var curr = course["events"][i];
                     if(!curr["repeat"]){
@@ -126,19 +134,20 @@
                     }
                 }
 
+                
+            }
+
+            function downloadCal(){
                 cal.download();
             }
 
         </script>
-        <title> My Calendar </title>
-        <link rel="stylesheet" href="search.css">
-        <?php include("includes/templates/header.php") ?>
         <div class="search">
             <input id="search-bar" type="text" placeholder="Search Course" class="searchCourse"/>
         </div>
                 
-
-        <button onclick="createICS()">Click me</button>
-        <input id="text-input" type="text" placeholder="stuff"/>
+        <button onclick="resetCal()">Reset Calendar</button>
+        <button onclick="createICS()">Add to Calendar</button>
+        <button onclick="downloadCal()">Download Calendar</button>
     </body>
 </html>
