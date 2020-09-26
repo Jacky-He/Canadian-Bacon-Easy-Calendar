@@ -18,6 +18,7 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
     <head>
         <title> My Calendar </title>
         <link rel="stylesheet" href="search.css">
+        <link rel="stylesheet" href="dashboard.css">
         <?php include("includes/templates/header.php") ?>
         <script src="includes/js/backgroundEvent.js"></script>
     </head>
@@ -36,20 +37,23 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
         <script src="includes/js/search_course.js"></script>
         <div class = "bg">
         <div class="search">
-            <input id="search-bar" type="text" placeholder="Search Course" onkeydown="searchKeyDown()" onclick="searchClick()" class="searchCourse"/>
-            <br>
-            <div id="dropdown" class="dropdown-content">
-                <p id="suggest0" onclick="autofill(0)">No course found.</p>
-                <p id="suggest1" onclick="autofill(1)">C1</p>
-                <p id="suggest2" onclick="autofill(2)">C2</p>
-                <!-- <p id="suggest3">C3</p>
-                <p id="suggest4">C4</p> -->
+            <div class="searchWithin">
+                <input id="search-bar" type="text" placeholder="Search Course"
+                onkeydown="searchKeyDown()" onclick="searchClick()" class="searchCourse"/>
+                <div id="dropdown" class="dropdown-content">
+                    <p id="suggest0" onclick="autofill(0)">No course found.</p>
+                    <p id="suggest1" onclick="autofill(1)">C1</p>
+                    <p id="suggest2" onclick="autofill(2)">C2</p>
+                    <!-- <p id="suggest3">C3</p>
+                    <p id="suggest4">C4</p> -->
+                </div>
             </div>
+            <button class="remove-button" onclick="removeFromICS()">Remove Course</button>
+            <button class="add-button" onclick="addToICS()">Add Course</button>
+            
         </div>
-        <div class="buttons">     
-        <button onclick="addToICS()">Add to Calendar</button>
-        <button onclick="downloadCal()">Download Calendar</button>
-        <button onclick="removeFromICS()">Remove from Calendar</button>
+        <div class="buttons">
+        <button class="download-button" onclick="downloadCal()">Download Calendar</button>
         </div>
         <div class="courseList">
             <p class = "titleP"> Your Courses </p>

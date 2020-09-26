@@ -1,6 +1,7 @@
 .search {
     text-align: center;
     display: block;
+    padding: 0 10%;
 }
 
 .buttons {
@@ -15,18 +16,25 @@
 }
 
 .searchCourse {
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 6px 4px;
     border: solid rgba(0,0,0,0);
     border-bottom: solid #ebebeb;
-    width: 30%;
-    font-size: 1.1em;
+    width: 100%;
+    font-size: 1.2em;
     transition: 0.3s;
+    height: 30px;
 }
 
 .searchCourse:focus {
     border: solid rgba(0,0,0,0);
     border-bottom: solid skyblue;
+}
+
+.searchWithin {
+    display: inline-block;
+    width: 50%;
 }
 
 /* .search:focus-within .dropdown-content {
@@ -36,7 +44,7 @@
 .dropdown-content {
     display: none;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    width: 30%;
+    width: 100%;
     padding: 10px;
     z-index: 1;
 }

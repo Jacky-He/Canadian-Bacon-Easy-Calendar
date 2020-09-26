@@ -1,0 +1,31 @@
+button {
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 1.1em;
+    border-radius: 5px;
+    vertical-align: text-top;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.add-button {
+    margin: 20px;
+    background-color: rgb(42, 212, 0);
+    float: right;
+    width: 10em;
+}
+
+.remove-button {
+    margin: 20px;
+    background-color: red;
+    float: right;
+    width: 10em;
+}
+
+.download-button {
+    background-color: rgb(15, 119, 255);
+}
