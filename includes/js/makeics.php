@@ -67,7 +67,6 @@
                             }
 
                             function addCourse(responseText){
-                                alert(responseText);
                                 console.log(responseText);
                             }
 
@@ -159,7 +158,6 @@
                             }
 
                             function removeCourse(responseText){
-                                alert(responseText);
                                 console.log(responseText);
                             }
 
