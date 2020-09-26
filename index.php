@@ -14,6 +14,16 @@ if (isset($_SESSION["loggedin"]) && isset($_SESSION["session_email"]) && $_SESSI
         <meta name="description" content="">
         <link rel="stylesheet" href="/includes/styles/css/welcome.css">
         <?php include("includes/templates/header.php") ?>
+    </head>
+    <body>
+        <div class="nav">
+            <ul>
+            <a href="home.php"><li>Home</li></a>
+            <a href="index.php"><li>Login</li></a>
+            <a href="contact.php"><li>Contact</li></a>
+            <a href="dashboard.php"><li>Dashboard</li></a>
+            </ul> 
+        </div>
         <!-- header start -->
         <div class="content">
             <div class="getstartedwrapper">

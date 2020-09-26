@@ -23,19 +23,24 @@
     border-bottom: solid skyblue;
 }
 
-.search:focus-within .dropdown-content {
+/* .search:focus-within .dropdown-content {
     display: inline-block;
-}
+} */
 
 .dropdown-content {
     display: none;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     width: 30%;
     padding: 10px;
+    z-index: 1;
 }
 
 .dropdown-content p {
     display: block;
+}
+
+.dropdown-content:hover p{
+    cursor: pointer;
 }
 
 .titleP {
