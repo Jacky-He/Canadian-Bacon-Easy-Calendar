@@ -1,7 +1,12 @@
+html {
+    height: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    height: 100%;
 }
 ul {
     list-style-type: none;
@@ -24,11 +29,11 @@ li:hover{
     background-color: #e0e8ef;
 }
 .bg {
-    background-image: url("includes/images/background.jpg");
+    /* background-image: url("includes/images/background.jpg");
   
     height: 100%;
   
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;*/
 }

@@ -8,8 +8,9 @@
         <div class = "bg">
         <div class="search">
             <input id="search-bar" type="text" placeholder="Search Course" class="searchCourse"/>
+            <br>
             <div class="dropdown-content">
-                <a href="#"> No course found. </a>
+                <spam>No course found.</spam>
             </div>
         </div>
                 
