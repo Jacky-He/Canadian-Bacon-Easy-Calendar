@@ -15,13 +15,34 @@ function callFunc (postparams, completion)
     xhttp.send(formData);
 }
 
-// let postparams = {
-//     funcName: "getAllEvents",
-// }
+let studbutton = document.getElementById("studbutton");
+let profbutton = document.getElementById("profbutton");
+let signupbutton = document.getElementById("signup");
+let loginbutton = document.getElementById("login");
 
-// function handleAddUser(responseText)
-// {
-//     alert (responseText);
-//     let json = JSON.parse(reponseText);
-// }
-// callFunc(postparams, handleAddUser);
+studbutton.addEventListener("click", function (e) {
+    studbutton.className = "rolebutton active";
+    profbutton.className = "rolebutton";
+});
+profbutton.addEventListener("click", function (e) {
+    studbutton.className = "rolebutton";
+    profbutton.className = "rolebutton active";
+})
+
+signupbutton.addEventListener("click", function(e) {
+    displaySignup();
+});
+
+loginbutton.addEventListener("click", function(e) {
+    displayLogin();
+});
+
+function displaySignup()
+{
+    
+}
+
+function displayLogin()
+{
+
+}
