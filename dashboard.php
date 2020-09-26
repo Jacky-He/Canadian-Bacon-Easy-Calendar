@@ -45,20 +45,20 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
                 <!-- <p id="suggest3">C3</p>
                 <p id="suggest4">C4</p> -->
             </div>
-            <div class="buttons">     
-            <button onclick="addToICS()">Add to Calendar</button>
-            <button onclick="downloadCal()">Download Calendar</button>
-            <button onclick="removeFromICS()">Remove from Calendar</button>
-            </div>
-            <div class="courseList">
-                <p class = "titleP"> Your Courses </p>
-                <ul id="course-list">
-                <ul>
-            </div>
-            <script>
-                updateList();
-            </script>
         </div>
+        <div class="buttons">     
+        <button onclick="addToICS()">Add to Calendar</button>
+        <button onclick="downloadCal()">Download Calendar</button>
+        <button onclick="removeFromICS()">Remove from Calendar</button>
+        </div>
+        <div class="courseList">
+            <p class = "titleP"> Your Courses </p>
+            <ul id="course-list">
+            <ul>
+        </div>
+        <script>
+            updateList();
+        </script>
     </body>
     <script src="includes/js/clickProcessing.js"></script>
 </html>
