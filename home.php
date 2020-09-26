@@ -25,11 +25,11 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
     </head>
     <body>
         <div class="nav">
-            <ul>
-            <a href="home.php"><li>Home</li></a>
-            <a href="logout.php"><li>Logout</li></a>
-            <a href="contact.php"><li>Contact</li></a>
-            <a href="dashboard.php"><li>Dashboard</li></a>
+            <ul class="nav-list">
+            <a href="home.php"><li class="nav1">Home</li></a>
+            <a href="index.php"><li class="nav2">Login</li></a>
+            <a href="contact.php"><li class="nav3">Contact</li></a>
+            <a href="dashboard.php"><li class="nav4">Dashboard</li></a>
             </ul> 
         </div>
         <div class="getstartedwrapper">

@@ -16,15 +16,6 @@ if (isset($_SESSION["loggedin"]) && isset($_SESSION["session_email"]) && $_SESSI
         <?php include("includes/templates/header.php") ?>
     </head>
     <body>
-        <!-- <div class="nav">
-            <ul>
-            <a href="home.php"><li>Home</li></a>
-            <a href="index.php"><li>Login</li></a>
-            <a href="contact.php"><li>Contact</li></a>
-            <a href="dashboard.php"><li>Dashboard</li></a>
-            </ul> 
-        </div> -->
-        <!-- header start -->
         <div class="content">
             <div class="getstartedwrapper">
                 <div class="welcome-text">WELCOME TO EASY CALENDAR!!</div>
