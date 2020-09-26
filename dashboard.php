@@ -19,16 +19,10 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
         <title> My Calendar </title>
         <link rel="stylesheet" href="search.css">
         <?php include("includes/templates/header.php") ?>
-<<<<<<< HEAD
-        <div id="session-email" hidden="true"><?php echo $_SESSION["session_email"]?></div>
-        <?php include("includes/js/makeics.php") ?>
-
-=======
 
         <div id="session-email" hidden="true"><?php echo $_SESSION["session_email"]?></div>
         <?php include("includes/js/makeics.php") ?>
         <script src="includes/js/search_course.js"></script>
->>>>>>> 632fb31bac8da44308caa3e14246d97e7f834136
         <div class = "bg">
         <div class="search">
             <input id="search-bar" type="text" placeholder="Search Course" onkeydown="processKeyDown()" onclick="processClick()" class="searchCourse"/>
