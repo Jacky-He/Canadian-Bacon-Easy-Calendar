@@ -452,7 +452,7 @@ function getEventById (string $event_id) : ?Event
     return null;
 }
 
-function getAllCourse() : array
+function getAllCourses() : array
 {
     $db = new DB();
     $sql =<<<EOF
