@@ -301,7 +301,6 @@ function submitEditedEvent(idx)
 
     function handler(response)
     {
-        alert(response);
         location.reload();
     }
     callFunc(params, handler);
