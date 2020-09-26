@@ -21,6 +21,7 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
         <?php include("includes/templates/header.php") ?>
 
         <div id="session-email" hidden="true"><?php echo $_SESSION["session_email"]?></div>
+
         <?php include("includes/js/makeics.php") ?>
         <script src="includes/js/search_course.js"></script>
         <div class = "bg">
