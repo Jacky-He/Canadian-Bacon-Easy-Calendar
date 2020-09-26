@@ -19,24 +19,34 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
         <title> My Calendar </title>
         <link rel="stylesheet" href="search.css">
         <?php include("includes/templates/header.php") ?>
-
+        <script src="includes/js/backgroundEvent.js"></script>
+    </head>
+    <body onclick="bgClick(event)">
+        <div class="nav">
+            <ul>
+            <a href="home.php"><li>Home</li></a>
+            <a href="index.php"><li>Login</li></a>
+            <a href="contact.php"><li>Contact</li></a>
+            <a href="dashboard.php"><li>Dashboard</li></a>
+            </ul> 
+        </div>
         <div id="session-email" hidden="true"><?php echo $_SESSION["session_email"]?></div>
 
         <?php include("includes/js/makeics.php") ?>
         <script src="includes/js/search_course.js"></script>
         <div class = "bg">
         <div class="search">
-            <input id="search-bar" type="text" placeholder="Search Course" onkeydown="processKeyDown()" onclick="processClick()" class="searchCourse"/>
+            <input id="search-bar" type="text" placeholder="Search Course" onkeydown="searchKeyDown()" onclick="searchClick()" class="searchCourse"/>
             <br>
-            <div class="dropdown-content">
-                <p id="suggest0">No course found.</p>
-                <p id="suggest1">C1</p>
-                <p id="suggest2">C2</p>
+            <div id="dropdown" class="dropdown-content">
+                <p id="suggest0" onclick="autofill(0)">No course found.</p>
+                <p id="suggest1" onclick="autofill(1)">C1</p>
+                <p id="suggest2" onclick="autofill(2)">C2</p>
                 <!-- <p id="suggest3">C3</p>
                 <p id="suggest4">C4</p> -->
             </div>
         </div>
-        <div class="search">     
+        <div class="buttons">     
         <button onclick="addToICS()">Add to Calendar</button>
         <button onclick="downloadCal()">Download Calendar</button>
         <button onclick="removeFromICS()">Remove from Calendar</button>
@@ -49,6 +59,6 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
         <script>
             updateList();
         </script>
-        </div>
     </body>
+    <script src="includes/js/clickProcessing.js"></script>
 </html>

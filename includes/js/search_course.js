@@ -1,3 +1,5 @@
+var inSearch = false;
+
 function commonPrefix(str, pattern) {
     for (var i = 0;i < Math.min(str.length, pattern.length);i++) {
         if (str.charAt(i) != pattern.charAt(i)) {
@@ -11,7 +13,6 @@ function courseMatch() {
     let params = {funcName: "getAllCourses"}
 
     function searchAllCourses(responseText) {
-        console.log(responseText);
         var json = JSON.parse(responseText);
         var i,j;
         
@@ -19,11 +20,10 @@ function courseMatch() {
         for (i = 0;i < json.length;i++) {
             allCourses.push(json[i]["name"]);
         }
-        console.log(allCourses);
 
         var target = document.getElementById("search-bar").value;
 
-        target = target.toLowerCase();
+        target = target.toLowerCase().trim();
         var formattedTarget = new String();
         for (i = 0;i < target.length;i++) {
             if ((target.charAt(i) >= 'a' && target.charAt(i) <= 'z') || 
@@ -115,10 +115,18 @@ function courseMatch() {
     callFunc(params, searchAllCourses);
 }
 
-function processKeyDown() {
+function searchKeyDown() {
     courseMatch();
 }
 
-function processClick() {
+function searchClick() {
+    document.getElementById("dropdown").style.display = "inline-block";
     courseMatch();
 }
+
+function autofill(idx) {
+    document.getElementById("search-bar").value = document.getElementById("suggest" + idx).innerHTML;
+}
+
+// if (document.querySelectorAll("div :focus").length === 1)
+//     console.log("not focused");
