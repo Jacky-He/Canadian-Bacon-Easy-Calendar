@@ -14,8 +14,7 @@
             </div>
         </div>
                 
-        <button onclick="resetCal()">Reset Calendar</button>
-        <button onclick="createICS()">Add to Calendar</button>
+        <button onclick="addToICS()">Add to Calendar</button>
         <button onclick="downloadCal()">Download Calendar</button>
 
         </div>
