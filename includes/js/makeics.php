@@ -21,7 +21,41 @@
 
             var cal = ics();
 
-            
+            function updateList(){
+                var list = document.getElementById("course-list");
+                while (list.firstChild) {
+                    list.firstChild.remove()
+                }
+                let email = document.getElementById("session-email").innerHTML;
+
+                let params = {
+                    funcName: "getUserByEmail",
+                    email: email
+                }
+                var user;
+                var courseArr;
+
+                function setUser(responseText){
+                    console.log(responseText);
+                    let json = JSON.parse(responseText);
+                    user = json;
+
+                    courseArr = user["courses"];
+
+                    for(var i = 0; i < courseArr.length; i++){
+
+                        var course = courseArr[i];
+                        var node = document.createElement("LI");  
+                        var textnode = document.createTextNode(course["name"].concat(" ", course["code"]));
+                        node.appendChild(textnode); 
+
+                        list.appendChild(node);
+                        
+                    }
+                }
+
+                callFunc(params, setUser);
+            }
 
             function addToICS(){
                 var input = document.getElementById("search-bar").value;
@@ -68,6 +102,7 @@
 
                             function addCourse(responseText){
                                 console.log(responseText);
+                                updateList();
                             }
 
                             callFunc(params, addCourse);
@@ -98,9 +133,11 @@
 
                             function addCourse(responseText){
                                 console.log(responseText);
+                                updateList();
                             }
 
                             callFunc(params, addCourse);
+                            
                         }
 
                         callFunc(params, setCourse);
@@ -159,6 +196,7 @@
 
                             function removeCourse(responseText){
                                 console.log(responseText);
+                                updateList();
                             }
 
                             callFunc(params, removeCourse);
@@ -189,6 +227,7 @@
 
                             function removeCourse(responseText){
                                 console.log(responseText);
+                                updateList();
                             }
 
                             callFunc(params, removeCourse);
@@ -206,7 +245,7 @@
             }
 
             function downloadCal(){
-                cal = ics();
+                
                 
                 let email = document.getElementById("session-email").innerHTML;
                 console.log(email);
@@ -219,6 +258,7 @@
                 var courseArr;
 
                 function setUser(responseText){
+                    cal = ics();
                     console.log(responseText);
                     let json = JSON.parse(responseText);
                     user = json;
@@ -228,11 +268,12 @@
                     for(var i = 0; i < courseArr.length; i++){
 
                         var course = courseArr[i];
-
+                        console.log(course["events"]);
                         for(var i = 0; i < course["events"].length; i++){
                             var curr = course["events"][i];
                             if(!curr["repeat"]){
-                                cal.addEvent(course["code"].concat(" ", course["labNumber"], course["lectureNumber"], curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", curr["start"], curr["end"]);
+                                cal.addEvent(course["code"].concat(" ", course["labNumber"], course["lectureNumber"], 
+                                " ", curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", parseInt(curr["start"]), parseInt(curr["end"]));
                             }
                             else{
                                 var rrule = {
@@ -241,7 +282,8 @@
                                     interval: curr["repeatinterval"],
                                     byday: [weekdays[curr["repeatday"]]]
                                 }
-                                cal.addEvent(course["code"].concat(" ", course["labNumber"], course["lectureNumber"], curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", curr["start"], curr["end"], rrule);
+                                cal.addEvent(course["code"].concat(" ", course["labNumber"], course["lectureNumber"],
+                                " ", curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", parseInt(curr["start"]), parseInt(curr["end"]), rrule);
                             }
                         }
                     }

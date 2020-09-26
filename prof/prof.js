@@ -42,6 +42,7 @@ function setup()
     {
         let json = JSON.parse(responseText);
         if (json) user = json;
+        setCourses();
     }
     callFunc(params2, handler2);
 }
@@ -118,6 +119,36 @@ function addCourse(idx)
     {
         alert (responseText);
         alert ("added");
+        location.reload();
     }
     callFunc(params, handler);
+}
+
+
+
+///courses
+let nocourse = document.getElementById("no-course");
+let coursecontainer = document.getElementById("courses-container");
+
+function setCourses()
+{
+    let courses = user["courses"];
+    if (courses.length == 0) nocourse.className = "no-course active";
+    else nocourse.className = "no-course";
+    let stack = [];
+    for (let i = 0; i < courses.length; i++)
+    {
+        let course = courses[i];
+        let newhtml = `
+        <a href="/prof/course/course.php?id=${course["id"]}" style="text-decoration: none; color: black">
+            <div class="underline"></div>
+            <span class="course-code">${course["code"]}</span>
+            <span class="course-name" style="margin-left: 10px;">${course["name"]}</span>
+            <span class="lecture" style="margin-left: 10px;"><span style="font-family:'montserratbold'">lecture: </span>${course["lectureNumber"]}</span>
+            <span class="section" style="margin-left: 10px;"><span style="font-family:'montserratbold'">section: </span>${course["labNumber"]}</span>
+        </a>
+        `
+        stack.push(newhtml);
+    }
+    coursecontainer.innerHTML = stack.join("");
 }
