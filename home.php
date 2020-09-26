@@ -45,7 +45,11 @@
                 }
 
                 //Hard coded course for now
-                var course = {events: [
+                var course = {
+                    name: "Imperative Programming",
+                    code: "15122",
+                    
+                    events: [
                     {
                         id: "1",
                         type: "OH",
@@ -123,7 +127,7 @@
                 for(var i = 0; i < course["events"].length; i++){
                     var curr = course["events"][i];
                     if(!curr["repeat"]){
-                        cal.addEvent(curr["type"], curr["zoomlink"], "Carnegie Mellon University", curr["start"], curr["end"]);
+                        cal.addEvent(course["code"].concat(" ", curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", curr["start"], curr["end"]);
                     }
                     else{
                         var rrule = {
@@ -132,7 +136,7 @@
                             interval: curr["repeatinterval"],
                             byday: [weekdays[curr["repeatday"]]]
                         }
-                        cal.addEvent(curr["type"], curr["zoomlink"], "Carnegie Mellon University", curr["start"], curr["end"], rrule);
+                        cal.addEvent(course["code"].concat(" ", curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", curr["start"], curr["end"], rrule);
                     }
                 }
 
