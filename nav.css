@@ -25,15 +25,53 @@ li {
     display: inline-block;
     padding: 16px;
     margin: 0;
-    font-size: 1.2em;
+    font-size: 1.1em;
     background-color: inherit;
-    color: white;
-    transition: 0.3s;
+    font-family: "montserratregular";
 }
 
-li:hover{
+.nav1 {
+    color: white;
+    transition: 0.3s;
+    font-size: 1.2em;
+}
+
+.nav1:hover{
     cursor: pointer;
-    background-color: #e0e8ef;
+    background-color: darkmagenta;
+}
+
+.nav2 {
+    color: white;
+    transition: 0.3s;
+    font-size: 1.2em;
+}
+
+.nav2:hover{
+    cursor: pointer;
+    background-color: darkmagenta;
+}
+
+.nav3 {
+    color: white;
+    transition: 0.3s;
+    font-size: 1.2em;
+}
+
+.nav3:hover{
+    cursor: pointer;
+    background-color: darkmagenta;
+}
+
+.nav4 {
+    color: white;
+    transition: 0.3s;
+    font-size: 1.2em;
+}
+
+.nav4:hover{
+    cursor: pointer;
+    background-color: darkmagenta;
 }
 
 .bg {
