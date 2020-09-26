@@ -50,7 +50,6 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
             </div>
             <button class="remove-button" onclick="removeFromICS()">Remove Course</button>
             <button class="add-button" onclick="addToICS()">Add Course</button>
-            
         </div>
         <div class="buttons">
         <button class="download-button" onclick="downloadCal()">Download Calendar</button>

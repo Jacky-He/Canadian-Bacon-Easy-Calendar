@@ -246,7 +246,6 @@ function submitNewEvent()
 
     function handler(response)
     {
-        alert (response);
         let json = JSON.parse(response);
         if (json && json["id"])
         {
@@ -269,7 +268,6 @@ function addEventToCourse(event_id)
     };
     function handler(response)
     {
-        alert (response);
         location.reload();
     }
     callFunc(params, handler);
@@ -303,7 +301,6 @@ function submitEditedEvent(idx)
 
     function handler(response)
     {
-        alert (response);
         location.reload();
     }
     callFunc(params, handler);

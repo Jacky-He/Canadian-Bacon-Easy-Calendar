@@ -99,7 +99,6 @@ function handleSearch()
 
 function addCourse(idx)
 {
-    // alert ("d");
     let userid = user["id"];
     let usercourses = user["courses"];
     for (let i = 0; i < usercourses.length; i++)
@@ -117,8 +116,6 @@ function addCourse(idx)
     }
     function handler (responseText)
     {
-        alert (responseText);
-        alert ("added");
         location.reload();
     }
     callFunc(params, handler);
@@ -140,15 +137,41 @@ function setCourses()
     {
         let course = courses[i];
         let newhtml = `
-        <a href="/prof/course/course.php?id=${course["id"]}" style="text-decoration: none; color: black">
-            <div class="underline"></div>
-            <span class="course-code">${course["code"]}</span>
-            <span class="course-name" style="margin-left: 10px;">${course["title"]}</span>
-            <span class="lecture" style="margin-left: 10px;"><span style="font-family:'montserratbold'">lecture: </span>${course["lectureNumber"]}</span>
-            <span class="section" style="margin-left: 10px;"><span style="font-family:'montserratbold'">section: </span>${course["labNumber"]}</span>
+        <a href="/prof/course/course.php?id=${course["id"]}" style="text-decoration: none; color: black;">
+            <div class="badcontainer" style="position:relative; width: 100%;">
+                <div class="underline"></div>
+                <span class="course-code">${course["code"]}</span>
+                <span class="course-name" style="margin-left: 10px;">${course["title"]}</span>
+                <span class="lecture" style="margin-left: 10px;"><span style="font-family:'montserratbold'">lecture: </span>${course["lectureNumber"]}</span>
+                <span class="section" style="margin-left: 10px;"><span style="font-family:'montserratbold'">section: </span>${course["labNumber"]}</span>
+                <div class="remove"><img alt="remove img" class="remove-img" src="/includes/images/remove.png"/></div>
+            </div>
         </a>
         `
         stack.push(newhtml);
     }
     coursecontainer.innerHTML = stack.join("");
+    let removebuttons = document.getElementsByClassName("remove");
+    for (let i = 0; i < removebuttons.length; i++)
+    {
+        removebuttons[i].addEventListener("click", function(e) {
+            removeCourse(i, courses);
+        });
+    }
+}
+
+function removeCourse(idx, courses)
+{
+    let id = courses[idx]["id"];
+    let user_id = user["id"];
+    let param = {
+        funcName: "removeCourseFromUser",
+        course_id:id,
+        user_id:user_id
+    };
+    function handler(response)
+    {
+        location.reload();
+    }
+    callFunc(param, handler);
 }
