@@ -33,7 +33,6 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
         <button onclick="resetCal()">Reset Calendar</button>
         <button onclick="createICS()">Add to Calendar</button>
         <button onclick="downloadCal()">Download Calendar</button>
-
         </div>
     </body>
 </html>
