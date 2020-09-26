@@ -8,6 +8,22 @@
         <?php include("includes/header.php") ?>
         
         <script>
+            function callFunc (postparams, completion)
+            {
+                let xhttp = new XMLHttpRequest();
+                let formData = new FormData();
+                for (each in postparams) formData.append (each, postparams[each]);
+                xhttp.onreadystatechange = function()
+                {
+                    if (this.readyState == 4 && this.status == 200)
+                    {
+                        completion (this.responseText);
+                    }
+                }
+                xhttp.open("POST", "/data/datafunc.php")
+                xhttp.send(formData);
+            }
+
             var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
                            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
             var weekdays = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
@@ -27,14 +43,18 @@
                         type: "OH",
                         start: "9/26/2020 5:30 pm",
                         end: "9/26/2020 6:30 pm",
-                        repeat: false,
+                        repeat: true,
                         repeatday: 1,
                         repeatinterval: 1,
                         zoomlink: "LINK"
                     }
-                ]}
+                ]};
                 if(hasLetters){
-                    //TODO
+                    //Course name
+                    let params = {
+                        funcName: "getCourseByCourseName",
+                        course_name: ""
+                    }
                 }
                 else{
                     //TODO
@@ -45,16 +65,16 @@
                 for(var i = 0; i < course["events"].length; i++){
                     var curr = course["events"][i];
                     if(!curr["repeat"]){
-                        cal.addEvent(curr["type"], curr["zoomlink"], "", curr["start"], curr["end"]);
+                        cal.addEvent(curr["type"], curr["zoomlink"], "Carnegie Mellon University", curr["start"], curr["end"]);
                     }
                     else{
                         var rrule = {
                             freq: "WEEKLY",
                             count: 10,
-                            interval: 1,
-                            byday: curr["repeatday"]
+                            interval: curr["repeatinterval"],
+                            byday: [weekdays[curr["repeatday"]]]
                         }
-                        cal.addEvent(curr["type"], curr["zoomlink"], "", curr["start"], curr["end"], rrule);
+                        cal.addEvent(curr["type"], curr["zoomlink"], "Carnegie Mellon University", curr["start"], curr["end"], rrule);
                     }
                 }
 
