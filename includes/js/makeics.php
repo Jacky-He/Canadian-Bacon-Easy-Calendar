@@ -21,7 +21,41 @@
 
             var cal = ics();
 
-            
+            function updateList(){
+                var list = document.getElementById("course-list");
+                while (list.firstChild) {
+                    list.firstChild.remove()
+                }
+                let email = document.getElementById("session-email").innerHTML;
+
+                let params = {
+                    funcName: "getUserByEmail",
+                    email: email
+                }
+                var user;
+                var courseArr;
+
+                function setUser(responseText){
+                    console.log(responseText);
+                    let json = JSON.parse(responseText);
+                    user = json;
+
+                    courseArr = user["courses"];
+
+                    for(var i = 0; i < courseArr.length; i++){
+
+                        var course = courseArr[i];
+                        var node = document.createElement("LI");  
+                        var textnode = document.createTextNode(course["name"].concat(" ", course["code"]));
+                        node.appendChild(textnode); 
+
+                        list.appendChild(node);
+                        
+                    }
+                }
+
+                callFunc(params, setUser);
+            }
 
             function addToICS(){
                 var input = document.getElementById("search-bar").value;
@@ -68,6 +102,7 @@
 
                             function addCourse(responseText){
                                 console.log(responseText);
+                                updateList();
                             }
 
                             callFunc(params, addCourse);
@@ -98,9 +133,11 @@
 
                             function addCourse(responseText){
                                 console.log(responseText);
+                                updateList();
                             }
 
                             callFunc(params, addCourse);
+                            
                         }
 
                         callFunc(params, setCourse);
@@ -159,6 +196,7 @@
 
                             function removeCourse(responseText){
                                 console.log(responseText);
+                                updateList();
                             }
 
                             callFunc(params, removeCourse);
@@ -189,6 +227,7 @@
 
                             function removeCourse(responseText){
                                 console.log(responseText);
+                                updateList();
                             }
 
                             callFunc(params, removeCourse);

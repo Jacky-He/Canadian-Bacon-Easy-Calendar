@@ -35,6 +35,15 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
         <button onclick="addToICS()">Add to Calendar</button>
         <button onclick="downloadCal()">Download Calendar</button>
         <button onclick="removeFromICS()">Remove from Calendar</button>
+
+        <div class="courseList">
+            <p> Your Courses </p>
+            <ul id="course-list">
+            <ul>
+        </div>
+        <script>
+            updateList();
+        </script>
         </div>
     </body>
 </html>
