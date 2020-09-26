@@ -55,6 +55,36 @@
                         repeatday: 1,
                         repeatinterval: 1,
                         zoomlink: "LINK"
+                    },
+                    {
+                        id: "2",
+                        type: "OH",
+                        start: "9/26/2020 6:30 pm",
+                        end: "9/26/2020 7:30 pm",
+                        repeat: true,
+                        repeatday: 1,
+                        repeatinterval: 2,
+                        zoomlink: "LINK"
+                    },
+                    {
+                        id: "3",
+                        type: "OH",
+                        start: "9/26/2020 7:30 pm",
+                        end: "9/26/2020 8:30 pm",
+                        repeat: true,
+                        repeatday: 1,
+                        repeatinterval: 4,
+                        zoomlink: "LINK"
+                    },
+                    {
+                        id: "4",
+                        type: "OH",
+                        start: "9/26/2020 8:30 pm",
+                        end: "9/26/2020 9:30 pm",
+                        repeat: false,
+                        repeatday: 1,
+                        repeatinterval: 1,
+                        zoomlink: "LINK"
                     }
                 ]};
                 if(hasLetters){
