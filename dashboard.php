@@ -36,7 +36,7 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
                 <p id="suggest4">C4</p> -->
             </div>
         </div>
-        <div class="search">     
+        <div class="buttons">     
         <button onclick="addToICS()">Add to Calendar</button>
         <button onclick="downloadCal()">Download Calendar</button>
         <button onclick="removeFromICS()">Remove from Calendar</button>
