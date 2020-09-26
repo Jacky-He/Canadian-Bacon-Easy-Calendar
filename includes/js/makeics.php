@@ -249,12 +249,13 @@
                     user = json;
 
                     courseArr = user["courses"];
-
                     for(var i = 0; i < courseArr.length; i++){
 
+                        
                         var course = courseArr[i];
-                        for(var i = 0; i < course["events"].length; i++){
-                            var curr = course["events"][i];
+                        for(var j = 0; j < course["events"].length; j++){
+                            var curr = course["events"][j];
+                            
                             if(!curr["repeat"]){
                                 cal.addEvent(course["code"].concat(" ", curr["type"], " (", course["name"], ")"), 
                                 curr["zoomlink"], "Carnegie Mellon University", parseInt(curr["start"]), parseInt(curr["end"]));
@@ -272,9 +273,10 @@
                         }
                     }
 
-                        
-
-                    cal.download();
+                    
+                    if(!cal.download()){
+                        alert("Calendar is Empty");
+                    }
                 }
 
                 callFunc(params, setUser);
