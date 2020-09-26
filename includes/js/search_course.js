@@ -9,17 +9,19 @@ function commonPrefix(str, pattern) {
 
 function courseMatch() {
     let params = {funcName: "getAllCourses"}
-    // test input:
-    // var allCourses = ["15-122 principles", "15-151 foundations", "21-295", "15-295", "73-102", "21-122"];
 
     function searchAllCourses(responseText) {
         console.log(responseText);
         var json = JSON.parse(responseText);
-        var allCourses = json;
-
-        var target = new String("15-122 Principles");
-        console.log(allCourses[0]["name"]);
         var i,j;
+        
+        var allCourses = [];
+        for (i = 0;i < json.length;i++) {
+            allCourses.push(json[i]["name"]);
+        }
+        console.log(allCourses);
+
+        var target = document.getElementById("search-bar").value;
 
         target = target.toLowerCase();
         var formattedTarget = new String();
@@ -36,11 +38,12 @@ function courseMatch() {
 
         var courseKeywords = [];
         for (i = 0;i < allCourses.length;i++) {
+            let currentCourse = allCourses[i].toLowerCase();
             let formattedCourse = new String();
-            for (j = 0;j < allCourses[i].length;j++) {
-                if ((allCourses[i].charAt(j) >= 'a' && allCourses[i].charAt(j) <= 'z') || 
-                (allCourses[i].charAt(j) >= '0' && allCourses[i].charAt(j) <= '9')) {
-                    formattedCourse += allCourses[i].charAt(j);
+            for (j = 0;j < currentCourse.length;j++) {
+                if ((currentCourse.charAt(j) >= 'a' && currentCourse.charAt(j) <= 'z') || 
+                (currentCourse.charAt(j) >= '0' && currentCourse.charAt(j) <= '9')) {
+                    formattedCourse += currentCourse.charAt(j);
                 }
                 else {
                     formattedCourse += " ";
@@ -72,9 +75,6 @@ function courseMatch() {
             }
         }
 
-        console.log(wordMatches);
-        console.log(prefixMatches);
-
         var bestMatches = [];
         var numSuggestions = 3;
         for (i = 0;i < allCourses.length;i++) {
@@ -95,7 +95,21 @@ function courseMatch() {
             }
         }
 
-        console.log(bestMatches);
+        while (bestMatches.length > 0 &&
+        wordMatches[bestMatches[bestMatches.length - 1]] == 0 &&
+        prefixMatches[bestMatches[bestMatches.length - 1]] == 0) {
+            bestMatches.pop();
+        }
+
+        for (i = 0;i < numSuggestions;i++) {
+            if (i < bestMatches.length) {
+                document.getElementById("suggest" + i).innerHTML = allCourses[bestMatches[i]];
+                document.getElementById("suggest" + i).style.display = "block";
+            }
+            else {
+                document.getElementById("suggest" + i).style.display = "none";
+            }
+        }
     }
 
     callFunc(params, searchAllCourses);

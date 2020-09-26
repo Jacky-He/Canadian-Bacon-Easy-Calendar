@@ -28,7 +28,11 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
             <input id="search-bar" type="text" placeholder="Search Course" onkeydown="processKeyDown()" onclick="processClick()" class="searchCourse"/>
             <br>
             <div class="dropdown-content">
-                <spam>No course found.</spam>
+                <p id="suggest0">No course found.</p>
+                <p id="suggest1">C1</p>
+                <p id="suggest2">C2</p>
+                <!-- <p id="suggest3">C3</p>
+                <p id="suggest4">C4</p> -->
             </div>
         </div>
                 
