@@ -9,3 +9,35 @@
     justify-content: center;
     margin-bottom: 20px;
 }
+
+.course-code
+{
+    color: white;
+    margin-left: 50px;
+    font-family: 'montserratbold';
+    font-size: 30px;
+}
+
+.course-name
+{
+    color: white;
+    margin-left: 50px;
+    font-size: 18px;
+    font-family: 'montserratregular';
+}
+
+.lecturenumber
+{
+    color: white;
+    margin-left: 50px;
+    font-size: 14px;
+    font-family: 'montserratregular';
+}
+
+.labnumber
+{
+    color: white;
+    margin-left: 50px;
+    font-size: 14px;
+    font-family: 'montserratregular';
+}

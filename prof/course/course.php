@@ -32,15 +32,18 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
     </head>
     <body>
         <div id="session-email" hidden="true"><?php echo $_SESSION["session_email"]?></div>
+        <div id="course-id" hidden="true"><?php echo $course_id?></div>
         <div class="content">
             <div class="topsec">
-                <div class="course-code"><?php echo $course["code"] ?></div>
-                <div class="course-name"><?php echo $course["name"] ?></div>
-                <div class="lecturenumber"><?php echo $course["lectureNumber"] ?></div>
-                <div class="recitationnumber"><?php echo $course["labNumber"] ?></div>
+                <div id="course-code" class="course-code"></div>
+                <div id="course-name" class="course-name"></div>
+                <div id="lecturenumber" class="lecturenumber"></div>
+                <div id="labnumber" class="labnumber"></div>
             </div>
             <div class="container">
                 <div class="row">
+
+
                     <div class="col-lg-8">
                         <div class="existing-courses">Your Courses</div>
                         <div id="no-course" class="no-course active">You currently have no courses</div>
