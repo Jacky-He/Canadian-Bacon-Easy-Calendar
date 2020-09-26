@@ -13,11 +13,11 @@
     </head>
     <body>
         <div class="nav">
-            <ul>
-            <a href="home.php"><li>Home</li></a>
-            <a href="index.php"><li>Login</li></a>
-            <a href="contact.php"><li>Contact</li></a>
-            <a href="dashboard.php"><li>Dashboard</li></a>
+            <ul class="nav-list">
+                <a href="home.php"><li>Home</li></a>
+                <a href="logout.php"><li>Log out</li></a>
+                <a href="contact.php"><li>Contact</li></a>
+                <a href="dashboard.php"><li>Dashboard</li></a>
             </ul> 
         </div>
         <div class = "email">

@@ -116,8 +116,6 @@ function addCourse(idx)
     }
     function handler (responseText)
     {
-        alert (responseText);
-        alert ("added");
         location.reload();
     }
     callFunc(params, handler);
@@ -173,7 +171,6 @@ function removeCourse(idx, courses)
     };
     function handler(response)
     {
-        alert(response);
         location.reload();
     }
     callFunc(param, handler);
