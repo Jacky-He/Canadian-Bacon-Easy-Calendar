@@ -19,8 +19,9 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
         <title> My Calendar </title>
         <link rel="stylesheet" href="search.css">
         <?php include("includes/templates/header.php") ?>
-        <?php include("includes/js/makeics.php") ?>
         <div id="session-email" hidden="true"><?php echo $_SESSION["session_email"]?></div>
+        <?php include("includes/js/makeics.php") ?>
+
         <div class = "bg">
         <div class="search">
             <input id="search-bar" type="text" placeholder="Search Course" class="searchCourse"/>
@@ -32,6 +33,7 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
                 
         <button onclick="addToICS()">Add to Calendar</button>
         <button onclick="downloadCal()">Download Calendar</button>
+        <button onclick="removeFromICS()">Remove from Calendar</button>
         </div>
     </body>
 </html>
