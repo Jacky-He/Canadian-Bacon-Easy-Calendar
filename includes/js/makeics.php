@@ -36,7 +36,6 @@
                 var courseArr;
 
                 function setUser(responseText){
-                    console.log(responseText);
                     let json = JSON.parse(responseText);
                     user = json;
 
@@ -65,7 +64,6 @@
                 var course;
 
                 let email = document.getElementById("session-email").innerHTML;
-                console.log(email);
 
                 let params = {
                     funcName: "getUserByEmail",
@@ -74,7 +72,6 @@
                 var user;
 
                 function setUser(responseText){
-                    console.log(responseText);
                     let json = JSON.parse(responseText);
                     user = json;
 
@@ -90,7 +87,6 @@
                         }
 
                         function setCourse(responseText){
-                            console.log(responseText);
                             let json = JSON.parse(responseText);
                             course = json;
 
@@ -101,7 +97,6 @@
                             }
 
                             function addCourse(responseText){
-                                console.log(responseText);
                                 updateList();
                             }
 
@@ -121,7 +116,6 @@
                         }
 
                         function setCourse(responseText){
-                            console.log(responseText);
                             let json = JSON.parse(responseText);
                             course = json;
 
@@ -132,7 +126,6 @@
                             }
 
                             function addCourse(responseText){
-                                console.log(responseText);
                                 updateList();
                             }
 
@@ -159,7 +152,6 @@
                 var course;
 
                 let email = document.getElementById("session-email").innerHTML;
-                console.log(email);
 
                 let params = {
                     funcName: "getUserByEmail",
@@ -168,7 +160,6 @@
                 var user;
 
                 function setUser(responseText){
-                    console.log(responseText);
                     let json = JSON.parse(responseText);
                     user = json;
 
@@ -184,7 +175,6 @@
                         }
 
                         function setCourse(responseText){
-                            console.log(responseText);
                             let json = JSON.parse(responseText);
                             course = json;
 
@@ -195,7 +185,6 @@
                             }
 
                             function removeCourse(responseText){
-                                console.log(responseText);
                                 updateList();
                             }
 
@@ -215,7 +204,6 @@
                         }
 
                         function setCourse(responseText){
-                            console.log(responseText);
                             let json = JSON.parse(responseText);
                             course = json;
 
@@ -226,7 +214,6 @@
                             }
 
                             function removeCourse(responseText){
-                                console.log(responseText);
                                 updateList();
                             }
 
@@ -248,7 +235,6 @@
                 
                 
                 let email = document.getElementById("session-email").innerHTML;
-                console.log(email);
 
                 let params = {
                     funcName: "getUserByEmail",
@@ -259,7 +245,6 @@
 
                 function setUser(responseText){
                     cal = ics();
-                    console.log(responseText);
                     let json = JSON.parse(responseText);
                     user = json;
 
@@ -268,7 +253,6 @@
                     for(var i = 0; i < courseArr.length; i++){
 
                         var course = courseArr[i];
-                        console.log(course["events"]);
                         for(var i = 0; i < course["events"].length; i++){
                             var curr = course["events"][i];
                             if(!curr["repeat"]){
