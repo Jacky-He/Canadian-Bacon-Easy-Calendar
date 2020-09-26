@@ -1,0 +1,76 @@
+
+@font-face {
+    font-family: 'montrealbold';
+    src: url('/includes/styles/fonts/montrealbold-webfont.woff2') format('woff2'),
+        url('/includes/styles/fonts/montrealbold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'helveticabold';
+    src: url('/includes/styles/fonts/helvetica-bold-02-webfont.woff2') format('woff2'),
+        url('/includes/styles/fonts/helvetica-bold-02-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'helveticaregular';
+    src: url('/includes/styles/fonts/helvetica-01-webfont.woff2') format('woff2'),
+        url('/includes/styles/fonts/helvetica-01-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratregular';
+    src: url('/includes/styles/fonts/montserrat-light.woff2') format('woff2'),
+        url('/includes/styles/fonts/montserrat-light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratbold';
+    src: url('/includes/styles/fonts/montserrat-regular.woff2') format('woff2'),
+        url('/includes/styles/fonts/montserrat-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratextrabold';
+    src: url('/includes/styles/fonts/montserrat-extrabold.woff2') format('woff2'),
+        url('/includes/styles/fonts/montserrat-extrabold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* .welcome-text {
+
+    font-family: 'montserratextrabold';
+    font-size: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+    color: 
+}    */
+
+.get-started {
+    font-family: 'montserratbold';
+    width: 100%;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+}
+
+.getstartedwrapper {
+    position: absolute;
+    top: 150px;
+    width: 100%;
+}

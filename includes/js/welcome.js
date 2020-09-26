@@ -15,13 +15,13 @@ function callFunc (postparams, completion)
     xhttp.send(formData);
 }
 
-let postparams = {
-    funcName: "getAllEvents",
-}
+// let postparams = {
+//     funcName: "getAllEvents",
+// }
 
-function handleAddUser(responseText)
-{
-    alert (responseText);
-    let json = JSON.parse(reponseText);
-}
-callFunc(postparams, handleAddUser);
+// function handleAddUser(responseText)
+// {
+//     alert (responseText);
+//     let json = JSON.parse(reponseText);
+// }
+// callFunc(postparams, handleAddUser);
