@@ -217,6 +217,11 @@
     padding-right: 10px;
 }
 
+.product-description {
+    font-family: 'montserratregular';
+    width: 600px;
+}
+
 .cancel-img {
     width: 100%;
 }
