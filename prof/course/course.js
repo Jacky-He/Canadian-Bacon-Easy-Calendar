@@ -43,7 +43,7 @@ function setup()
     {
         let json = JSON.parse(responseText);
         course_code.innerHTML = json["code"];
-        course_name.innerHTML = json["name"];
+        course_name.innerHTML = json["title"];
         lecturenumber.innerHTML = "Lecture: " + json["lectureNumber"];
         labnumber.innerHTML = "Section: " + json["labNumber"];
         events = json["events"];
@@ -160,6 +160,7 @@ function editEvent(idx)
     editing = true;
     displayGrayout();
     let event = events[idx];
+
     edittype.value = event["type"];
     edityear.value = new Date(parseInt(event["start"], 10)).getFullYear() + "";
     editmonth.value = new Date(parseInt(event["start"], 10)).getMonth() + 1 + "";
@@ -169,6 +170,7 @@ function editEvent(idx)
     editendhour.value = new Date(parseInt(event["end"], 10)).getHours() + "";
     editendminute.value = new Date(parseInt(event["end"], 10)).getMinutes() + "";
     editrepeat.value = (event["repeat"] ? "yes" : "no");
+
     if (editrepeat.value == "yes")
     {
         repeatfreq.hidden = false;
@@ -197,6 +199,20 @@ function addEvent()
     formtitle.innerHTML = "Add Event";
     adding = true;
     displayGrayout();
+
+    edittype.value = "oh";
+    edityear.value = "2020";
+    editmonth.value = "1";
+    editday.value = "1";
+    editstarthour.value = "0";
+    editstartminute.value = "0";
+    editendhour.value = "1";
+    editendminute.value = "0";
+    editrepeat.value = "no";
+    editzoomlink.value = "";
+    repeatfreq.hidden = true;
+    repeatfreqop.hidden = true;
+
     submit.onclick = function ()
     {
         submitNewEvent();

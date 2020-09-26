@@ -62,7 +62,7 @@ function handleSearch()
         for (let k = 0; k < searcharr.length; k++)
         {
             if (course["code"].includes(searcharr[k])) courses[i]["matchval"]++;
-            if (course["name"].includes(searcharr[k])) courses[i]["matchval"]++;
+            if (course["title"].includes(searcharr[k])) courses[i]["matchval"]++;
             if (course["lectureNumber"].includes(searcharr[k])) courses[i]["matchval"]++;
             if (course["labNumber"].includes(searcharr[k])) courses[i]["matchval"]++;
         }
@@ -79,7 +79,7 @@ function handleSearch()
             <div class="drop-course-item">
                 <div class="add-course"><img src="/includes/images/add.png" alt="add icon" class="add-img"/></div>
                 <div class="course-code">${courses[i]["code"]}</div>
-                <div class="course-name">${courses[i]["name"]}</div>
+                <div class="course-name">${courses[i]["title"]}</div>
                 <div class="lecture">lecture: ${courses[i]["lectureNumber"]}</div>
                 <div class="section">section: ${courses[i]["labNumber"]}</div>
             </div>
@@ -143,7 +143,7 @@ function setCourses()
         <a href="/prof/course/course.php?id=${course["id"]}" style="text-decoration: none; color: black">
             <div class="underline"></div>
             <span class="course-code">${course["code"]}</span>
-            <span class="course-name" style="margin-left: 10px;">${course["name"]}</span>
+            <span class="course-name" style="margin-left: 10px;">${course["title"]}</span>
             <span class="lecture" style="margin-left: 10px;"><span style="font-family:'montserratbold'">lecture: </span>${course["lectureNumber"]}</span>
             <span class="section" style="margin-left: 10px;"><span style="font-family:'montserratbold'">section: </span>${course["labNumber"]}</span>
         </a>

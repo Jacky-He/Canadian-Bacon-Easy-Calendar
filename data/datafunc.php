@@ -45,11 +45,13 @@ else if ($funcName == "addCourse")
     $lecture_num = $_POST["lecture_num"];
     $recitation_num = $_POST["recitation_num"];
     $course_name = $_POST["course_name"];
+    $course_title = $_POST["course_title"];
     if ($course_code == "") throwError("no parameter course_code");
     if ($lecture_num == "") throwError("no parameter lecture_num");
     if ($recitation_num == "") throwError("no parameter recitation_num");
     if ($course_name == "") throwError("no parameter course_name");
-    echo json_encode(addCourse($course_code, $lecture_num, $recitation_num, $course_name));
+    if ($course_title == "") throwError("no parameter course_title");
+    echo json_encode(addCourse($course_code, $lecture_num, $recitation_num, $course_name, $course_title));
 }
 else if ($funcName == "removeCourse")
 {

@@ -54,8 +54,9 @@ class Course
     public $lectureNumber;
     public $labNumber;
     public $events;
+    public $title;
 
-    function __construct(int $id, string $name, string $code, string $lectureNumber, string $labNumber, array $events)
+    function __construct(int $id, string $name, string $code, string $lectureNumber, string $labNumber, array $events, string $title)
     {
         $this->id = $id;
         $this->name = $name;
@@ -63,6 +64,7 @@ class Course
         $this->lectureNumber = $lectureNumber;
         $this->labNumber = $labNumber;
         $this->events = $events;
+        $this->title = $title;
     }
 }
 
@@ -120,6 +122,7 @@ function createDatabases()
         course_name TEXT NOT NULL,
         course_code TEXT NOT NULL,
         lecture_num TEXT NOT NULL,
+        course_title TEXT NOT NULL,
         lab_num TEXT NOT NULL
     );
     EOF;
@@ -223,7 +226,7 @@ function courseNameExists(string $course_name) : bool
     return false;
 }
 
-function addCourse (string $course_code, string $lecture_num, string $recitation_num, string $course_name) : ?Course
+function addCourse (string $course_code, string $lecture_num, string $recitation_num, string $course_name, string $course_title) : ?Course
 {
     if (courseCodeExists($course_code) || courseNameExists($course_name)) 
     {
@@ -233,8 +236,8 @@ function addCourse (string $course_code, string $lecture_num, string $recitation
     echo "hello";
     $db = new DB();
     $sql =<<<EOF
-    INSERT INTO courses (course_name, course_code, lecture_num, lab_num)
-    VALUES ('$course_name', '$course_code', '$lecture_num', '$recitation_num');
+    INSERT INTO courses (course_name, course_code, lecture_num, lab_num, course_title)
+    VALUES ('$course_name', '$course_code', '$lecture_num', '$recitation_num', '$course_title');
     EOF;
     $ret = $db -> exec($sql);
     if (!$ret) echo $db -> lastErrorMsg();
@@ -408,7 +411,7 @@ function getCourseById (string $course_id) : ?Course
         {
             array_push($events, getEventById($row2['event_id']));
         }
-        return new Course($row['id'], $row['course_name'], $row['course_code'], $row['lecture_num'], $row['lab_num'], $events);
+        return new Course($row['id'], $row['course_name'], $row['course_code'], $row['lecture_num'], $row['lab_num'], $events, $row['course_title']);
     }
     return null;
 }
@@ -432,7 +435,7 @@ function getCourseByCourseName (string $course_name) : ?Course
         {
             array_push($events, getEventById($row2['event_id']));
         }
-        return new Course($row['id'], $row['course_name'], $row['course_code'], $row['lecture_num'], $row['lab_num'], $events);
+        return new Course($row['id'], $row['course_name'], $row['course_code'], $row['lecture_num'], $row['lab_num'], $events, $row['course_title']);
     }
     return null;
 }
@@ -456,7 +459,7 @@ function getCourseByCourseCode (string $course_code) : ?Course
         {
             array_push($events, getEventById($row2['event_id']));
         }
-        return new Course($row['id'], $row['course_name'], $row['course_code'], $row['lecture_num'], $row['lab_num'], $events);
+        return new Course($row['id'], $row['course_name'], $row['course_code'], $row['lecture_num'], $row['lab_num'], $events, $row['course_title']);
     }
     return null;
 }
