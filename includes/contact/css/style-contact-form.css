@@ -1,0 +1,504 @@
+/* import fontawesome */
+
+@import '../fontawesome/css/fontawesome.min.css';
+@import '../fontawesome/css/regular.min.css';
+@import '../fontawesome/css/solid.min.css';
+
+
+
+/* common styles */
+
+* {
+				box-sizing: border-box;
+}
+
+body {
+				margin: 0;
+				background-color: #FFFFFF;
+				padding-top: 7px;
+				padding-bottom: 20px;
+}
+
+body,
+textarea,
+input,
+select,
+.senden {
+				font-family: Arial, sans-serif;
+				font-size: 14px;
+}
+
+.kontaktformular {
+				width: 600px;
+				max-width: 100%;
+				padding: 1.2rem;			
+				margin-left:20px;
+				padding-top: 5px;
+				padding-bottom: 15px;		
+}
+
+
+
+/* style common rows/grid */
+
+.kontaktformular .row {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				margin-bottom: 0.6rem;
+				width: 100%;
+}
+
+.kontaktformular .row .col-sm-4 {
+				flex-grow:1;
+				flex-basis: 0;
+				margin: 0 .75rem;
+				position: relative;
+}
+.kontaktformular .row .col-sm-4:first-child {
+	margin-left: 0;
+}
+.kontaktformular .row .col-sm-4:last-child {
+	margin-right: 0;
+}
+
+.kontaktformular .row .col-sm-8 {
+				width: 100%;
+				position: relative;
+}
+
+
+
+/* style common labels */
+
+.kontaktformular .row .control-label {
+	color: #404040;
+		margin-left:2.2px;		
+
+}
+
+
+
+/* style common fields */
+.kontaktformular .row input,
+.kontaktformular .row textarea {
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+				
+}
+.kontaktformular .row .field {
+				display: block;	
+				font-size: 14px;
+				width: 100%;
+				padding: .84rem .8rem .60rem .8rem;
+				color: #555555;
+				margin-top:3px;
+				border: 1px solid #CCCCCC;
+				border-radius: 2px;
+				transition: border-color ease-in-out .15s;
+				background-color: #F5F6F6;
+				
+}
+.kontaktformular .row .field:hover,
+.kontaktformular .row .field:focus,
+.kontaktformular .row input[type="checkbox"]:hover,
+.kontaktformular .row input[type="checkbox"]:focus {
+				border-color: #000 !important;
+				outline: 0 !important;
+				box-shadow: none;
+				
+}
+
+
+.kontaktformular .row .field:focus {
+    background-color: #fff;
+}
+   
+
+
+
+
+
+/* style textarea */
+
+.kontaktformular .row .textarea-label{
+				 color: #404040;
+margin-left:2.2px;
+				
+}
+
+
+
+.kontaktformular .row textarea {
+				height: 1.7rem;
+				
+}
+
+
+/* style selectbox */
+
+.kontaktformular .row .select-label{
+				 color: #404040;
+			margin-left:2.2px;				
+			
+}
+
+
+
+
+
+/* style rows with complex contents  */
+
+.kontaktformular .captcha-row,
+.kontaktformular .question-row,
+.kontaktformular .checkbox-row,
+.kontaktformular .upload-row {
+				display: block;
+				font-size: 14px;
+				width: 100%;
+				color: #555555;
+				border: 0.0rem solid #dddddd;
+				border-radius: 2px;
+				transition: border-color ease-in-out .15s;
+				
+}
+.kontaktformular .captcha-row .control-label,
+.kontaktformular .question-row .control-label,
+.kontaktformular .upload-row .control-label,
+.kontaktformular .checkbox-row .control-label{
+				height: 100%;
+				margin-top: 0; 
+}
+.kontaktformular .captcha-row > div,
+.kontaktformular .question-row > div{
+				padding-bottom: 0rem;
+}
+.kontaktformular .captcha-row div div,
+.kontaktformular .question-row div div{
+				width: 100%;
+				padding: .10rem 0 .75rem 2px;
+}
+.kontaktformular .checkbox-row > div{
+				padding-bottom: 0rem;
+				padding-top:1.4rem;
+}
+
+
+
+/* style upload-fields  */
+
+.kontaktformular .row input[type="file"] {
+				width: calc(100% - 60px);
+				height: 30px;
+				margin: 1.5rem 0 1px 2px;
+}
+.kontaktformular .row .control-label + input[type="file"] {
+				margin-top: .75rem;
+}
+.kontaktformular .row input[type="file"]:last-child {
+				margin-bottom: .10rem;
+}
+
+
+
+
+
+
+
+/* style security-fields  */
+
+.kontaktformular .captcha-row .field,
+.kontaktformular .question-row .field{
+				width: 100%;
+				margin: .2rem 0 2px 0px;
+				
+}
+.kontaktformular .row#answer .control-label {
+				align-self: flex-start;
+}
+
+
+
+/* style checkbox-row  */
+
+.kontaktformular .checkbox-row{
+margin-bottom: -10px;
+}
+
+
+.kontaktformular .checkbox-row .checkbox-inline{
+				display: block;
+				padding: 0rem 0 0rem 0px;
+				
+}
+
+.kontaktformular .checkbox-row .checkbox-inline a:hover,
+.kontaktformular .checkbox-row .checkbox-inline a:focus {
+				color: #0025e2;
+				text-decoration: underline;
+}
+
+.kontaktformular .checkbox-row .checkbox-inline a,
+.kontaktformular .checkbox-row .checkbox-inline span {
+				color: #0020c1;
+				text-decoration: none;
+				line-height: 24px;
+				padding-left: 10px;
+				
+}
+.kontaktformular .checkbox-row .checkbox-inline span{
+				color: inherit;
+}
+.kontaktformular .row input[type="checkbox"] {
+				height: 22px;
+				width: 22px;
+				border: 1px solid #CCCCCC;
+				border-radius: 2px;
+				transition: border-color ease-in-out .15s;	
+				display: block;
+				float: left;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+				cursor: pointer;
+				margin-left: 0.5px;
+				background-color: #F5F6F6;
+}
+.kontaktformular .row input:checked {
+				background: url(../img/check-solid.svg) no-repeat center center;
+				background-size: 75%;
+}
+
+
+
+/* style submit-button  */
+
+.kontaktformular .row .senden {
+				width: 100%;
+				font-size: 16px;
+				font-weight: bold;
+				height: 2.5rem;
+				margin-top: calc(1rem/16*5);
+				padding: .5rem .75rem;
+				color: white;
+				background-color: #6E6E6E;
+				border: 1px solid transparent;
+				border-color: #2e6da4;
+				border-radius: 4px;
+}
+
+.kontaktformular .row .senden:hover {
+				background-color: #585858;
+				border-color: #204d74;
+				cursor: pointer;
+}
+
+
+
+
+
+/* style select-box for placeholders */
+
+.kontaktformular .row select {
+                background-color: #fff;
+                background: url(../img/chevron-down-solid.svg) no-repeat;
+				        background-position: right 8px center;
+				        background-size: 15px 10px;
+				        cursor: pointer;
+				        
+}
+
+.kontaktformular .row ::placeholder{
+				color: grey;
+				opacity: 0.7;
+				}
+				
+
+	
+				
+.kontaktformular .row select.unselected{
+				color: #A6A6A6;
+				border: 1px solid #CCCCCC;
+				border-radius: 2px;
+				transition: border-color ease-in-out .15s;				  
+				background: url(../img/chevron-down-solid.svg) no-repeat;
+				background-position: right 8px center;
+				background-size: 15px 10px;
+				cursor: pointer;
+				background-color: #F5F6F6;
+				
+}
+
+
+.kontaktformular .row select.field{
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	z-index: 1;
+}
+.kontaktformular .row select.field option[value=""][disabled] {
+				display: none;
+}
+.kontaktformular .row select.field option {
+				color: #555555;
+}
+.kontaktformular .row select.field option[value=""] {
+				color: rgba(0,0,0,0.4);
+}
+
+
+
+/* style errors */
+
+.kontaktformular .row .error .select-label{
+				color: #404040;
+			margin-left:2.2px;
+}
+
+
+
+
+
+.kontaktformular .row .error .control-label{
+				color: #404040;
+		margin-left:2.2px;	
+}
+
+
+
+
+.kontaktformular .row .error .textarea-label{
+			 color: #404040;
+margin-left:2.2px;
+}
+
+
+
+
+
+
+
+
+
+.kontaktformular .row .error .field,
+.kontaktformular .row .error .checkbox-inline input,
+.kontaktformular.kontaktformular-validate .row .field:invalid,
+.kontaktformular.kontaktformular-validate .row .checkbox-inline input:invalid{	/* style invalid fields only if user wants to send the form (integrated via js) */
+				background-color: #ffeaec;
+				border-color: #eac0c5;
+}
+.kontaktformular .row .field:invalid,
+.kontaktformular .row .checkbox-inline input:invalid{		/* remove browser-style for invalid fields */
+				outline: none;
+				box-shadow:none;
+}
+.kontaktformular .row .field:focus:valid,
+.kontaktformular .row .checkbox-inline input:focus:valid{
+				background-color: #FFFFFF;
+				border-color: #d9e8d5;
+				outline: none;
+				box-shadow:none;
+}
+.kontaktformular .row .error ::placeholder{
+				color: rgba(219, 0, 7, 0.6);
+}
+
+.kontaktformular .row .error select.unselected
+{
+				color: rgba(219, 0, 7, 0.4);
+}
+
+.kontaktformular .row .errormsg{
+				color: #db0007;
+				font-size: .75rem;
+				
+					
+}
+.kontaktformular .captcha-row.error_container,
+.kontaktformular .question-row.error_container,
+.kontaktformular .checkbox-row.error_container{
+	margin-bottom: 2.7rem;				
+					
+}
+.kontaktformular .captcha-row .errormsg,
+.kontaktformular .question-row .errormsg{
+				
+				
+}
+.kontaktformular .checkbox-row .errormsg{
+				display: block;
+				position: absolute;
+				left: 0;
+				margin-bottom: -20px;
+}
+
+
+
+
+
+
+.kontaktformular .captcha-row.error_container .control-label,
+.kontaktformular .question-row.error_container .control-label,
+.kontaktformular .upload-row.error_container .control-label,
+.kontaktformular .checkbox-row.error_container .control-label{
+				height: 100%;
+				margin-top: 0; background:url(../img/border-right-red.png) bottom right no-repeat;
+}
+
+
+
+
+
+
+
+/* style for mobile */
+
+@media (max-width: 655px) {
+
+
+body {
+				margin: 0;
+				
+				padding-top: 0px;
+				padding-bottom: 20px;
+}
+				
+				.kontaktformular {
+								padding: 1px 1rem 1px 1rem;
+								/* box-shadow: none; */
+								margin-left:15px;
+								margin-top:0px;
+								margin-right:15px;
+								width: auto;
+				}
+				.kontaktformular .row {
+								display: block;
+								margin-top: 10px;
+				}
+				.kontaktformular .row .col-sm-4{
+								flex-grow:0;
+								flex-basis: 0;
+								margin: 0;
+				}
+				.kontaktformular .row .col-sm-4,
+				.kontaktformular .row .col-sm-8 {
+								margin-top: 11px;
+				}
+				.kontaktformular .captcha-row .col-sm-8,
+				.kontaktformular .question-row .col-sm-8,
+				.kontaktformular .upload-row .col-sm-8,
+				.kontaktformular .checkbox-row .col-sm-8{
+								margin-top: 0;
+				}
+
+}
+
+
+
+/* style copyright */
+
+.copyright {
+	 color: #000000;
+	 font-size: 13px;
+}
