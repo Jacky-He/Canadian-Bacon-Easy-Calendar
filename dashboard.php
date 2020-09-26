@@ -9,7 +9,7 @@ if (isset($_GET["session_email"]) && $_GET["session_email"] != "")
 
 if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SESSION["loggedin"] == false)
 {
-    header("location: ../index.php");
+    header("location: index.php");
 }
 ?>
 

@@ -29,6 +29,7 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
         <script src="/includes/vendors/bootstrap/bootstrap.min.js"></script>
     </head>
     <body>
+        <div id="session-email"><?php echo $_SESSION["session_email"]?></div>
         <div class="content">
             <div class="topsec">Welcome</div>
             <div class="container">
