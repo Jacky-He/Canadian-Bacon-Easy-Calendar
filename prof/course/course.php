@@ -47,7 +47,7 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
                             <div class="event-title">All Events</div>
                             <div id="addbutton" class="addbutton"><img src="/includes/images/add.png" class="add-img"></div>
                         </div>
-                        <div id="noevent" class="noevent" hidden="true">There are currently no events</div>
+                        <div id="noevent" class="noevent" hidden="true">There are currently no events for this course</div>
                         <div id="drop-down" class="drop-down">
                             <div class="borderline"></div>
                             <div class="event-container">
