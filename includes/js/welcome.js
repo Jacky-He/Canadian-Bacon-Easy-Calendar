@@ -89,7 +89,7 @@ function submitSignUp()
     };
     function handler (responseText)
     {
-        alert (responseText);
+        let json = JSON.parse(responseText);
         if (json && json["id"]) 
         {
             alert ("Success");
@@ -116,7 +116,8 @@ function submitLogIn()
             if (json[i]["email"] == email && json[i]["password"] == pass)
             {
                 hideGrayout();
-                window.location.replace("/home.php?session_email=" + email);
+                if (json[i]["role"] == "stud") window.location.replace("/dashboard.php?session_email=" + email);
+                else if (json[i]["role"] == "prof") window.location.replace("/prof/index.php?session_email=" + email);
                 break;
             }
         }
