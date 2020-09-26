@@ -34,6 +34,7 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
                 
         <button onclick="addToICS()">Add to Calendar</button>
         <button onclick="downloadCal()">Download Calendar</button>
+        <button onclick="removeFromICS()">Remove from Calendar</button>
         </div>
     </body>
 </html>
