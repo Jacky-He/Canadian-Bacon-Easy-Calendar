@@ -30,6 +30,10 @@ li {
     font-family: "montserratregular";
 }
 
+li:hover {
+    cursor: pointer;
+}
+
 .nav1 {
     display: inline-block;
     color: white;
