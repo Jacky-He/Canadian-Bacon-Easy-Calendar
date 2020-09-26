@@ -45,11 +45,13 @@ else if ($funcName == "addCourse")
     $lecture_num = $_POST["lecture_num"];
     $recitation_num = $_POST["recitation_num"];
     $course_name = $_POST["course_name"];
+    $course_title = $_POST["course_title"];
     if ($course_code == "") throwError("no parameter course_code");
     if ($lecture_num == "") throwError("no parameter lecture_num");
     if ($recitation_num == "") throwError("no parameter recitation_num");
     if ($course_name == "") throwError("no parameter course_name");
-    echo json_encode(addCourse($course_code, $lecture_num, $recitation_num, $course_name));
+    if ($course_title == "") throwError("no parameter course_title");
+    echo json_encode(addCourse($course_code, $lecture_num, $recitation_num, $course_name, $course_title));
 }
 else if ($funcName == "removeCourse")
 {
@@ -89,7 +91,27 @@ else if ($funcName == "addEvent")
     if ($repeat_day == "") throwError("no parameter repeat_day");
     if ($repeat_interval == "") throwError("no parameter repeat_interval");
     if ($zoom_link == "") throwError("no parameter zoom_link");
-    echo json_encode(addEvent ($type, $start, $end, intval($repeat), intval($repeat_day), intval($repeat_interval), $zoom_link));
+    echo json_encode(addEvent ($type, $start, $end, $repeat, intval($repeat_day), intval($repeat_interval), $zoom_link));
+}
+else if ($funcName == "setEvent")
+{
+    $id = $_POST["id"];
+    $type = $_POST["type"];
+    $start = $_POST["start"];
+    $end = $_POST["end"];
+    $repeat = $_POST["repeat"];
+    $repeat_day = $_POST["repeat_day"];
+    $repeat_interval = $_POST["repeat_interval"];
+    $zoom_link = $_POST["zoom_link"];
+    if ($id == "") throwError("no parameter id");
+    if ($type == "") throwError("no parameter type");
+    if ($start == "") throwError("no parameter start");
+    if ($end == "") throwError("no parameter end");
+    if ($repeat == "") throwError("no parameter repeat");
+    if ($repeat_day == "") throwError("no parameter repeat_day");
+    if ($repeat_interval == "") throwError("no parameter repeat_interval");
+    if ($zoom_link == "") throwError("no parameter zoom_link");
+    echo json_encode(setEvent ($id, $type, $start, $end, $repeat, intval($repeat_day), intval($repeat_interval), $zoom_link));
 }
 else if ($funcName == "removeEvent")
 {

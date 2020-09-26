@@ -41,7 +41,7 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
                     <div class="col-lg-8">
                         <div class="existing-courses">Your Courses</div>
                         <div id="no-course" class="no-course active">You currently have no courses</div>
-                        <div id="courses-container" class="courses-container">
+                        <div id="courses-container"class="courses-container">
                             <!-- <a href="/prof/course/course.php?id=stuff" style="text-decoration: none; color: black">
                                 <div class="course-id" hidden="true">asdfasd</div>
                                 <div class="underline"></div>

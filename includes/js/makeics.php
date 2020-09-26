@@ -46,7 +46,7 @@
 
                         var course = courseArr[i];
                         var node = document.createElement("LI");  
-                        var textnode = document.createTextNode(course["name"].concat(" ", course["code"]));
+                        var textnode = document.createTextNode(course["name"]);
                         node.appendChild(textnode); 
 
                         list.appendChild(node);
