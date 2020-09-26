@@ -29,12 +29,18 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
         <script src="/includes/vendors/bootstrap/bootstrap.min.js"></script>
     </head>
     <body>
-        <div id="session-email"><?php echo $_SESSION["session_email"]?></div>
+        <div id="session-email" hidden="true"><?php echo $_SESSION["session_email"]?></div>
         <div class="content">
-            <div class="topsec">Welcome</div>
+            <div class="topsec">
+                <div class="hellotext">
+                Hello!
+                </div>
+            </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-7"></div>
+                    <div class="col-lg-7">
+                        <div class="search"></div>
+                    </div>
                     <div class="col-lg-3">
                         <input type="text" id="search-bar" placeholder="Search courses">
                         <div id="drop-down" class="drop-down">
@@ -52,7 +58,6 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
                 </div>
             </div>
         </div>
-
         <script src="/prof/prof.js"></script>
     </body>
     <!-- footer ends -->

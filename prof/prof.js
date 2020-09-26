@@ -1,5 +1,7 @@
 let search = document.getElementById("search-bar");
 let dropdown = document.getElementById("drop-down");
+let email = document.getElementById("session-email").innerHTML;
+let user = {};
 
 search.onchange = handleSearch;
 setup();
@@ -32,6 +34,16 @@ function setup()
         courses = json;
     }
     callFunc(params, handler);
+    let params2 = {
+        funcName: "getUserByEmail",
+        email: email,
+    };
+    function handler2(responseText)
+    {
+        let json = JSON.parse(responseText);
+        if (json) user = json;
+    }
+    callFunc(params2, handler2);
 }
 
 function handleSearch()
@@ -78,14 +90,34 @@ function handleSearch()
     let addbuttons = document.getElementsByClassName("add-course");
     for (let i = 0; i < addbuttons.length; i++)
     {
-        addbuttons[i].addEventListener("click", function(e)
-        {
+        addbuttons[i].addEventListener("click", function(e) {
             addCourse(i);
-        })
+        });
     }
 }
 
 function addCourse(idx)
 {
-    
+    // alert ("d");
+    let userid = user["id"];
+    let usercourses = user["courses"];
+    for (let i = 0; i < usercourses.length; i++)
+    {
+        if (usercourses[i]["id"] == courses[idx]["id"])
+        {
+            alert ("already added");
+            return;
+        }
+    }
+    let params = {
+        funcName: "addCourseToUser",
+        user_id: userid,
+        course_id: courses[idx]["id"]
+    }
+    function handler (responseText)
+    {
+        alert (responseText);
+        alert ("added");
+    }
+    callFunc(params, handler);
 }
