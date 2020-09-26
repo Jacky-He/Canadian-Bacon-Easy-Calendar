@@ -3,6 +3,12 @@
     display: block;
 }
 
+.buttons {
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+}
+
 .courseList {
     text-align: center;
     display: block;

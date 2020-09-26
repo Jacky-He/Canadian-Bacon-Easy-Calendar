@@ -272,8 +272,8 @@
                         for(var i = 0; i < course["events"].length; i++){
                             var curr = course["events"][i];
                             if(!curr["repeat"]){
-                                cal.addEvent(course["code"].concat(" ", course["labNumber"], course["lectureNumber"], 
-                                " ", curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", parseInt(curr["start"]), parseInt(curr["end"]));
+                                cal.addEvent(course["code"].concat(" ", curr["type"], " (", course["name"], ")"), 
+                                curr["zoomlink"], "Carnegie Mellon University", parseInt(curr["start"]), parseInt(curr["end"]));
                             }
                             else{
                                 var rrule = {
@@ -282,8 +282,8 @@
                                     interval: curr["repeatinterval"],
                                     byday: [weekdays[curr["repeatday"]]]
                                 }
-                                cal.addEvent(course["code"].concat(" ", course["labNumber"], course["lectureNumber"],
-                                " ", curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", parseInt(curr["start"]), parseInt(curr["end"]), rrule);
+                                cal.addEvent(course["code"].concat(" ", curr["type"], " (", course["name"], ")"), 
+                                curr["zoomlink"], "Carnegie Mellon University", parseInt(curr["start"]), parseInt(curr["end"]), rrule);
                             }
                         }
                     }
