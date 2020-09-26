@@ -1,9 +1,26 @@
+<?php 
+session_start();
+if (isset($_GET["session_email"]) && $_GET["session_email"] != "")
+{
+    $email = $_GET["session_email"];
+    $_SESSION["session_email"] = $email;
+    $_SESSION["loggedin"] = true;
+}
+
+if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SESSION["loggedin"] == false)
+{
+    header("location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title> My Calendar </title>
         <link rel="stylesheet" href="search.css">
         <?php include("includes/templates/header.php") ?>
+
+        <div id="session-email" hidden="true"><?php echo $_SESSION["session_email"]?></div>
         <?php include("includes/js/makeics.php") ?>
         <script src="includes/js/search_course.js"></script>
         <div class = "bg">
@@ -15,10 +32,8 @@
             </div>
         </div>
                 
-        <button onclick="resetCal()">Reset Calendar</button>
-        <button onclick="createICS()">Add to Calendar</button>
+        <button onclick="addToICS()">Add to Calendar</button>
         <button onclick="downloadCal()">Download Calendar</button>
-
         </div>
     </body>
 </html>

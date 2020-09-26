@@ -13,6 +13,7 @@ if (isset($_SESSION["loggedin"]) && isset($_SESSION["session_email"]) && $_SESSI
         <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
         <meta name="description" content="">
         <link rel="stylesheet" href="/includes/styles/css/welcome.css">
+        <?php include("includes/templates/header.php") ?>
         <!-- header start -->
         <div class="content">
             <div class="getstartedwrapper">

@@ -9,9 +9,9 @@
         <div class="cont">
             <div class="nav">
                 <ul>
-                <a href="default.asp"><li>Home</li></a>
-                <a href="Login.asp"><li>Login</li></a>
-                <a href="contact.asp"><li>Contact</li></a>
+                <a href="home.php"><li>Home</li></a>
+                <a href="index.php"><li>Login</li></a>
+                <a href="contact.php"><li>Contact</li></a>
                 <a href="dashboard.php"><li>Dashboard</li></a>
                 </ul> 
             </div>
