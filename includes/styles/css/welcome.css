@@ -121,6 +121,10 @@
     background-color: #00004D;
 }
 
+.signupbut:hover {
+    cursor: pointer;
+}
+
 .loginbut {
     position: relative;
     width: 250px;
@@ -137,6 +141,10 @@
     text-align: center;
     font-family: "montserratregular";
     font-size: 15px;
+}
+
+.loginbut:hover {
+    cursor: pointer;
 }
 
 .grayout-container {
