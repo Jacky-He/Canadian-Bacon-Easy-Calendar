@@ -24,11 +24,11 @@ if (!isset($_SESSION["loggedin"]) || !isset($_SESSION["session_email"]) || $_SES
     </head>
     <body onclick="bgClick(event)">
         <div class="nav">
-            <ul>
-            <a href="home.php"><li>Home</li></a>
-            <a href="index.php"><li>Login</li></a>
-            <a href="contact.php"><li>Contact</li></a>
-            <a href="dashboard.php"><li>Dashboard</li></a>
+            <ul class="nav-list">
+                <a href="home.php"><li>Home</li></a>
+                <a href="index.php"><li>Login</li></a>
+                <a href="contact.php"><li>Contact</li></a>
+                <a href="dashboard.php"><li>Dashboard</li></a>
             </ul> 
         </div>
         <div id="session-email" hidden="true"><?php echo $_SESSION["session_email"]?></div>
