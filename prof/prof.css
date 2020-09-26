@@ -3,6 +3,10 @@
     width: 100%;
     height: 300px;
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .leftsec
@@ -26,14 +30,16 @@
 .add-course {
     position: absolute;
     right: 0;
-    width: 20px;
+    width: 30px;
     top: 0px;
-    height: 20px;
+    height: 30px;
+    pointer-events: auto;
 }
 
 .drop-course-item
 {
     position: relative;
+    pointer-events: none;
 }
 
 .course-code {
@@ -55,4 +61,12 @@
     position: relative;
     font-family: 'montserratregular';
     font-size: 14px;
+}
+
+.hellotext {
+    position: relative;
+    margin-left: 40px;
+    font-family: 'montserratextrabold';
+    color: white;
+    font-size: 24px;
 }
