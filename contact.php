@@ -35,8 +35,6 @@
         <div class = "email">
         alextiax@andrew.cmu.edu
         </div>
-        
-        
         <!-- <iframe src='/includes/contact/contact.php' frameborder='0' width='100%' height='600' ></iframe> -->
     </body>
     <!-- footer ends -->
