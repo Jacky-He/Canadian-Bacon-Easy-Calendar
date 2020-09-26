@@ -22,7 +22,7 @@ body {
 }
 
 li {
-    display: inline-block;
+    display: block;
     padding: 16px;
     margin: 0;
     font-size: 1.1em;
@@ -31,6 +31,7 @@ li {
 }
 
 .nav1 {
+    display: inline-block;
     color: white;
     transition: 0.3s;
     font-size: 1.2em;
@@ -42,6 +43,7 @@ li {
 }
 
 .nav2 {
+    display: inline-block;
     color: white;
     transition: 0.3s;
     font-size: 1.2em;
@@ -53,6 +55,7 @@ li {
 }
 
 .nav3 {
+    display: inline-block;
     color: white;
     transition: 0.3s;
     font-size: 1.2em;
@@ -64,6 +67,7 @@ li {
 }
 
 .nav4 {
+    display: inline-block;
     color: white;
     transition: 0.3s;
     font-size: 1.2em;
