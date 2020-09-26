@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION["loggedin"]) && isset($_SESSION["user_id"]) && $_SESSION["loggedin"] == true)
+if (isset($_SESSION["loggedin"]) && isset($_SESSION["session_email"]) && $_SESSION["loggedin"] == true)
 {
     header("location: home.php");
 }
@@ -21,11 +21,17 @@ if (isset($_SESSION["loggedin"]) && isset($_SESSION["user_id"]) && $_SESSION["lo
                 <div id="studbutton" class="rolebutton active">I'm a Student</div>
                 <div id="profbutton" class="rolebutton">I'm a Professor/TA</div>
                 <div id="signup" class="signupbut"> Sign Up </div>
-                <div id="loginbut" class="loginbut"> Log in </div>
+                <div id="login" class="loginbut"> Log in </div>
             </div>
-            <div class="grayout-container">
+            <div id="grayout-container" class="grayout-container">
                 <div class="form-container">
-                    <div class="title">Sign up</div>
+                    <div id="cancel" class="cancel"><img src="/includes/images/cancel.png" alt="cancel button" class="cancel-img"/></div>
+                    <div id="form-title" class="title">Sign up</div>
+                    <div class="subtitle">Email</div>
+                    <input id="username" type="text" name="username" class="input" value="">
+                    <div class="subtitle">Password</div>
+                    <input id="password" type="password" name="password" class="input">
+                    <div id="submit" class="submit">Confirm</div>
                 </div>
             </div>
         </div>

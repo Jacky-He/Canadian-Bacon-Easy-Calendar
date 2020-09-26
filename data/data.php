@@ -70,13 +70,15 @@ class User
     public $id;
     public $role;
     public $email;
+    public $password;
     public $courses;
 
-    function __construct(int $id, string $role, string $email, array $courses)
+    function __construct(int $id, string $role, string $email, string $password, array $courses)
     {
         $this->id = $id;
         $this->role = $role;
         $this->email = $email;
+        $this->password = $password;
         $this->courses = $courses;
     }
 }
@@ -167,6 +169,7 @@ function userEmailExists($email) : bool
     EOF;
     $ret = $db -> query($sql);
     if ($row = $ret->fetchArray(SQLITE3_ASSOC)) return true;
+    return false;
 }
 
 function addUser (string $role, string $email, string $password) : ?User
@@ -337,7 +340,7 @@ function getUserById (string $user_id) : ?User
     $ret = $db -> query($sql);
     if ($row = $ret->fetchArray(SQLITE3_ASSOC))
     {
-        return new User($row['id'], $row['role'], $row['email'], $courses);
+        return new User($row['id'], $row['role'], $row['email'], $row['password'], $courses);
     }
     return null;
 }
@@ -361,7 +364,7 @@ function getUserByEmail (string $email) : ?User
         {
             array_push($courses, getCourseById($row2["course_id"]));
         }
-        return new User($row['id'], $row['role'], $row['email'], $courses);
+        return new User($row['id'], $row['role'], $row['email'], $row['password'], $courses);
     }
     return null;
 }
