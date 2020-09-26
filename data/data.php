@@ -174,6 +174,7 @@ function addUser (string $role, string $email, string $password) : ?User
     $ret = $db -> exec($sql);
     if (!$ret) echo $db -> lastErrorMsg();
     $db -> close();
+    return getUserByEmail($email);
 }
 
 function removeUser(string $id)
@@ -217,6 +218,7 @@ function addCourse (string $course_code, string $lecture_num, string $recitation
     EOF;
     $ret = $db -> exec($sql);
     if (!$ret) echo $db -> lastErrorMsg();
+    return getCourseByCourseCode($course_code);
 }
 
 function removeCourse(string $id)
@@ -246,14 +248,14 @@ function removeCourseFromUser(string $user_id, string $course_id)
 {
     $db = new DB();
     $sql =<<<EOF
-    DELTE FROM users_courses_link WHERE user_id=$user_id AND $course_id=$course_id;
+    DELTE FROM users_courses_link WHERE user_id=$user_id AND course_id=$course_id;
     EOF;
     $ret = $db -> exec($sql);
     if (!$ret) echo $db -> lastErrorMsg();
     $db -> close();
 }
 
-function addEvent (string $type, string $start, string $end, bool $repeat, int $repeat_day, int $repeat_interval, ?string $zoom_link) : ?Event
+function addEvent (string $type, string $start, string $end, bool $repeat, int $repeat_day, int $repeat_interval, ?string $zoom_link)
 {
     $db = new DB();
     $repeated = 0;
