@@ -14,7 +14,6 @@ if (isset($_SESSION["loggedin"]) && isset($_SESSION["user_id"]) && $_SESSION["lo
         <meta name="description" content="">
         <link rel="stylesheet" href="/includes/styles/css/styles.css">
         <!-- header start -->
-        <?php include("includes/templates/header.php") ?>
         <div class="content">
             
         </div>

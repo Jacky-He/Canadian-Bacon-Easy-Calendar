@@ -33,7 +33,7 @@ class Event
     public $repeatinterval;
     public $zoomlink;
 
-    function __construct(int $id, string $type, string $start, string $end, Boolean $repeat, int $repeatday, int $repeatinterval, string $zoomlink)
+    function __construct(int $id, string $type, string $start, string $end, bool $repeat, int $repeatday, int $repeatinterval, string $zoomlink)
     {
         $this->id = $id;
         $this->type = $type;
@@ -159,13 +159,23 @@ function createDatabases()
     if (!$ret) echo $db -> lastErrorMsg();
 }
 
-function userEmailExists() : Boolean
+function userEmailExists($email) : bool
 {
-
+    $db = new DB();
+    $sql =<<<EOF
+    SELECT * FROM users WHERE email = '$email';
+    EOF;
+    $ret = $db -> query($sql);
+    if ($row = $ret->fetchArray(SQLITE3_ASSOC)) return true;
 }
 
 function addUser (string $role, string $email, string $password) : ?User
 {
+    if (userEmailExists($email)) 
+    {
+        echo "User already exists";
+        return null;
+    }
     $db = new DB();
     $sql =<<<EOF
     INSERT INTO users (role, email, password)
@@ -181,28 +191,28 @@ function removeUser(string $id)
 {
     $db = new DB();
     $sql =<<<EOF
-    DELETE FROM users WHERE id = $id;
+    DELETE FROM users WHERE id=$id;
     EOF;
     if (!$ret) echo $db -> lastErrorMsg();
     $db -> close();
 }
 
-function courseCodeExists(string $course_code) : Boolean
+function courseCodeExists(string $course_code) : bool
 {
     $db = new DB();
     $sql =<<<EOF
-    SELECT * FROM courses WHERE course_code = '$course_code';
+    SELECT * FROM courses WHERE course_code='$course_code';
     EOF;
     $ret = $db -> query($sql);
     if ($row = $ret->fetchArray(SQLITE3_ASSOC)) return true;
     return false;
 }
 
-function courseNameExists(string $course_name) : Boolean
+function courseNameExists(string $course_name) : bool
 {
     $db = new DB();
     $sql =<<<EOF
-    SELECT * FROM courses WHERE course_name = '$course_name';
+    SELECT * FROM courses WHERE course_name='$course_name';
     EOF;
     $ret = $db -> query($sql);
     if ($row = $ret->fetchArray(SQLITE3_ASSOC)) return true;
@@ -211,10 +221,16 @@ function courseNameExists(string $course_name) : Boolean
 
 function addCourse (string $course_code, string $lecture_num, string $recitation_num, string $course_name) : ?Course
 {
+    if (courseCodeExists($course_code) || courseNameExists($course_name)) 
+    {
+        echo "course already exists";
+        return null;
+    }
+    echo "hello";
     $db = new DB();
     $sql =<<<EOF
     INSERT INTO courses (course_name, course_code, lecture_num, lab_num)
-    VALUES ('$course_code', '$lecture_num', '$recitation_num', '$course_name');
+    VALUES ('$course_name', '$course_code', '$lecture_num', '$recitation_num');
     EOF;
     $ret = $db -> exec($sql);
     if (!$ret) echo $db -> lastErrorMsg();
@@ -255,7 +271,7 @@ function removeCourseFromUser(string $user_id, string $course_id)
     $db -> close();
 }
 
-function addEvent (string $type, string $start, string $end, bool $repeat, int $repeat_day, int $repeat_interval, ?string $zoom_link)
+function addEvent (string $type, string $start, string $end, bool $repeat, int $repeat_day, int $repeat_interval, string $zoom_link)
 {
     $db = new DB();
     $repeated = 0;
@@ -403,7 +419,7 @@ function getCourseByCourseCode (string $course_code) : ?Course
     $db = new DB();
     $events = array();
     $sql =<<<EOF
-    SELECT * FROM courses WHERE course_code='$course_id';
+    SELECT * FROM courses WHERE course_code='$course_code';
     EOF;
     $ret = $db -> query($sql);
     if ($row = $ret->fetchArray(SQLITE3_ASSOC))
