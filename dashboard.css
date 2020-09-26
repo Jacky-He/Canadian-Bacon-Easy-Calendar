@@ -6,6 +6,7 @@ button {
     font-size: 1.1em;
     border-radius: 5px;
     vertical-align: text-top;
+    font-family: "montserratregular";
 }
 
 button:hover {

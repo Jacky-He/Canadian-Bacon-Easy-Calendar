@@ -126,6 +126,7 @@ function searchClick() {
 
 function autofill(idx) {
     document.getElementById("search-bar").value = document.getElementById("suggest" + idx).innerHTML;
+    courseMatch();
 }
 
 // if (document.querySelectorAll("div :focus").length === 1)
