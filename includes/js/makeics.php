@@ -43,16 +43,12 @@
                     console.log(responseText);
                     let json = JSON.parse(responseText);
                     user = json;
-                }
 
-                callFunc(params, setUser);
-
-                console.log(user);
-                
-                for(var i=0; i<letters.length && !hasLetters; i++){
-                    if(input.includes(letters[i])) hasLetters=true;
-                }
-                if(hasLetters){
+                                    
+                    for(var i=0; i<letters.length && !hasLetters; i++){
+                        if(input.includes(letters[i])) hasLetters=true;
+                    }
+                    if(hasLetters){
                         //Course name
                         params = {
                             funcName: "getCourseByCourseName",
@@ -63,22 +59,24 @@
                             console.log(responseText);
                             let json = JSON.parse(responseText);
                             course = json;
+
+                            params = {
+                                funcName: "addCourseToUser",
+                                user_id: user["id"],
+                                course_id: course["id"]
+                            }
+
+                            function addCourse(responseText){
+                                alert(responseText);
+                                console.log(responseText);
+                            }
+
+                            callFunc(params, addCourse);
                         }
 
                         callFunc(params, setCourse);
 
-                        params = {
-                            funcName: "addCourseToUser",
-                            user_id: user["id"],
-                            course_id: course["id"]
-                        }
 
-                        function addCourse(responseText){
-                            alert(responseText);
-                            console.log(responseText);
-                        }
-
-                        callFunc(params, addCourse);
 
                     }
                     else{
@@ -92,23 +90,29 @@
                             console.log(responseText);
                             let json = JSON.parse(responseText);
                             course = json;
+
+                            params = {
+                                funcName: "addCourseToUser",
+                                user_id: user["id"],
+                                course_id: course["id"]
+                            }
+
+                            function addCourse(responseText){
+                                console.log(responseText);
+                            }
+
+                            callFunc(params, addCourse);
                         }
 
                         callFunc(params, setCourse);
 
-                        params = {
-                            funcName: "addCourseToUser",
-                            user_id: user["id"],
-                            course_id: course["id"]
-                        }
 
-                        function addCourse(responseText){
-                            alert(responseText);
-                            console.log(responseText);
-                        }
-
-                        callFunc(params, addCourse);
                     }
+                }
+
+                callFunc(params, setUser);
+
+
             }
 
             function downloadCal(){
@@ -128,36 +132,38 @@
                     console.log(responseText);
                     let json = JSON.parse(responseText);
                     user = json;
+
+                    courseArr = user["courses"];
+
+                    for(var i = 0; i < courseArr.length; i++){
+
+                        var course = courseArr[i];
+
+                        for(var i = 0; i < course["events"].length; i++){
+                            var curr = course["events"][i];
+                            if(!curr["repeat"]){
+                                cal.addEvent(course["code"].concat(" ", course["labNumber"], course["lectureNumber"], curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", curr["start"], curr["end"]);
+                            }
+                            else{
+                                var rrule = {
+                                    freq: "WEEKLY",
+                                    until: "12/31/2020",
+                                    interval: curr["repeatinterval"],
+                                    byday: [weekdays[curr["repeatday"]]]
+                                }
+                                cal.addEvent(course["code"].concat(" ", course["labNumber"], course["lectureNumber"], curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", curr["start"], curr["end"], rrule);
+                            }
+                        }
+                    }
+
+                        
+
+                    cal.download();
                 }
 
                 callFunc(params, setUser);
 
-                courseArr = user["courses"];
 
-                for(var i = 0; i < courseArr.length; i++){
-
-                    var course = courseArr[i];
-
-                    for(var i = 0; i < course["events"].length; i++){
-                        var curr = course["events"][i];
-                        if(!curr["repeat"]){
-                            cal.addEvent(course["code"].concat(" ", course["labNumber"], course["lectureNumber"], curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", curr["start"], curr["end"]);
-                        }
-                        else{
-                            var rrule = {
-                                freq: "WEEKLY",
-                                until: "12/31/2020",
-                                interval: curr["repeatinterval"],
-                                byday: [weekdays[curr["repeatday"]]]
-                            }
-                            cal.addEvent(course["code"].concat(" ", course["labNumber"], course["lectureNumber"], curr["type"], " (", course["name"], ")"), curr["zoomlink"], "Carnegie Mellon University", curr["start"], curr["end"], rrule);
-                        }
-                    }
-                }
-
-                    
-                
-                cal.download();
             }
 
         </script>
