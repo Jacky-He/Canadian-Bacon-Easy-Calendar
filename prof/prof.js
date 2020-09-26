@@ -50,7 +50,7 @@ function setup()
 function handleSearch()
 {
     let stack = [];
-    let searchstring = search.value.trim();
+    let searchstring = search.value.trim().toLowerCase();
     let searcharr = searchstring.split(" ");
     for (let i = 0; i < courses.length; i++)
     {
@@ -61,10 +61,10 @@ function handleSearch()
         let course = courses[i];
         for (let k = 0; k < searcharr.length; k++)
         {
-            if (course["code"].includes(searcharr[k])) courses[i]["matchval"]++;
-            if (course["title"].includes(searcharr[k])) courses[i]["matchval"]++;
-            if (course["lectureNumber"].includes(searcharr[k])) courses[i]["matchval"]++;
-            if (course["labNumber"].includes(searcharr[k])) courses[i]["matchval"]++;
+            if (course["code"].includes(searcharr[k].toLowerCase())) courses[i]["matchval"]++;
+            if (course["title"].includes(searcharr[k].toLowerCase())) courses[i]["matchval"]++;
+            if (course["lectureNumber"].includes(searcharr[k].toLowerCase())) courses[i]["matchval"]++;
+            if (course["labNumber"].includes(searcharr[k].toLowerCase())) courses[i]["matchval"]++;
         }
     }
     courses.sort(function (a, b)
