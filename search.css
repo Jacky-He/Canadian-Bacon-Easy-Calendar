@@ -2,6 +2,7 @@
     text-align: center;
     display: block;
     padding: 0 10%;
+    font-family: "montserratregular";
 }
 
 .buttons {
@@ -25,6 +26,7 @@
     font-size: 1.2em;
     transition: 0.3s;
     height: 30px;
+    font-family: "montserratregular";
 }
 
 .searchCourse:focus {
@@ -47,6 +49,7 @@
     width: 100%;
     padding: 10px;
     z-index: 1;
+    font-family: "montserratregular";
 }
 
 .dropdown-content p {
